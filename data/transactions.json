@@ -1,0 +1,35 @@
+{
+  "transactions": [
+    {
+      "effectedAt": "2022-03-15",
+      "value": 100,
+      "description": "Salary"
+    },
+    {
+      "effectedAt": "2024-03-14",
+      "value": -50,
+      "description": "Groceries"
+    },
+    {
+      "effectedAt": "2022-03-13",
+      "value": 80,
+      "description": "Workana"
+    },
+    {
+      "effectedAt": "2022-03-12",
+      "value": -40,
+      "description": "Groceries"
+    },
+    {
+      "effectedAt": "2022-03-11",
+      "value": 110,
+      "description": "Vegetable"
+    },
+    {
+      "effectedAt": "2022-03-1",
+      "value": -80,
+      "description": "Food"
+    }
+    
+  ]
+}
