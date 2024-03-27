@@ -70,7 +70,7 @@ export default function HomePage({ searchParams }: PageProps) {
   return (
     <>
       <div className='flex flex-row h-screen'>
-        <div className='w-[88px]'>
+        <div className='w-[88px] hidden lg:block'>
           <Sidebar />
         </div>
         <div className='flex-grow bg-[#F3F3F5]'>
