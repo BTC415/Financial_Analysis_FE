@@ -14,8 +14,8 @@ const Detail: React.FC<DetailProps> = ({ transaction, clicked, setClicked }) => 
   return (
     clicked ? (
       <>
-        <div className='w-full h-full fixed left-0 right-0 top-0 bottom-0' onClick={() => setClicked(false)}></div>
-        <div className='bg-white md:w-[30%] fixed right-0 md:top-0  md:h-full shadow-md z-50 duration-300 ease-in-out bottom-0 h-1/2 w-full '>
+        <div className='w-full bg-gray-500 opacity-50 h-full fixed left-0 right-0 top-0 bottom-0 ' onClick={() => setClicked(false)}></div>
+        <div className='bg-white md:w-[30%] fixed right-0 md:top-0 mt-[72px] md:h-full shadow-md z-50 duration-300 ease-in-out bottom-0 min-h-fit w-full '>
           <div className='p-8 flex justify-between items-center border-b-2 border-gray-300'>
             <p className='font-bold text-xl'>Transação</p>
             <button onClick={() => setClicked(false)}>

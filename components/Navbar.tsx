@@ -3,7 +3,8 @@ import Image from "next/image";
 const Navbar = () => {
   return (
     <>
-      <div className="hidden sm:block justify-between items-center w-full h-18 bg-white">
+    <div className="hidden sm:block">
+      <div className=" flex justify-between items-center w-full h-18 bg-white">
         <div className=" p-2">
           <svg width={24} height={24}>
             <use href="#svg-three-bar" />
@@ -39,6 +40,8 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+    </div>
+      
       <div className=" sm:hidden bg-[#2E5E9E] flex flex-row justify-between px-4">
         <div className="w-[88px] h-[72px] flex justify-center items-center">
           <svg width={40} height={40}>

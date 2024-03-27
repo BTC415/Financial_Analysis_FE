@@ -11,9 +11,10 @@ import FormatValue from '@/components/FormatValue';
 import PaginationBar from '@/components/PaginationBar';
 import Detail from '@/components/Detail';
 import { Transaction } from '@/lib/transactions';
-import { Select, Dropdown, Button, MenuProps, Checkbox } from "antd";
+import { Select, Popover, Button, MenuProps, Checkbox } from "antd";
 
 import Calendar from '@/components/CalendarPopup';
+import DetailedDate from '@/components/DetailedDate';
 
 interface PageProps {
   searchParams: { page?: string };
@@ -21,8 +22,6 @@ interface PageProps {
 const PAGE_SIZE = 10;
 
 export default function HomePage({ searchParams }: PageProps) {
-
-
   const [clicked, setClicked] = useState(false)
   // const transactions = await getTransactions();
   const page = searchParams.page ? parseInt(searchParams.page) : 1
@@ -31,17 +30,15 @@ export default function HomePage({ searchParams }: PageProps) {
   const [pageCount, setPageCount] = React.useState<number>(0);
   const [transaction, setTransaction] = React.useState<Transaction | undefined>(undefined);
   const [order, setOrder] = React.useState<string | undefined>(undefined);
-
   const [tipo, setTipo] = React.useState<string | undefined>(undefined);
-
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const [searchExtend, setSearchExtend] = React.useState<boolean>(false);
 
   const showDrawer = (_transaction: Transaction) => {
     setTransaction(_transaction);
     setClicked(true)
 
     console.log(_transaction);
-
   }
 
   React.useEffect(() => {
@@ -68,7 +65,7 @@ export default function HomePage({ searchParams }: PageProps) {
 
   return (
     <>
-      <div className='flex flex-row h-screen'>
+      <div className={`flex flex-row ${clicked ? 'bg-opacity-50 bg-gray-600':''}`}>
         <div className='w-[88px] hidden lg:block'>
           <Sidebar />
         </div>
@@ -76,47 +73,68 @@ export default function HomePage({ searchParams }: PageProps) {
           <Navbar />
           <div className='flex items-center p-3 mx-2 gap-3'>
             <p className='font-bold text-xl flex flex-grow'>Extracto</p>
-            <svg width={40} height={40} className='block md:hidden'><use href='#svg-collapse' /></svg>
-            <div className='flex  flex-row rounded-lg bg-white border border-[#DDDEE3] p-2 items-center'>
-              <svg width={24} height={24}><use href='#svg-left-arrow' /></svg>
-              <p className='text-xs mx-5'>02/05/22 à 08/05/22</p>
-              <svg width={24} height={24}><use href='#svg-right-arrow' /></svg>
-            </div>
-            {/* <div className='flex flex-row justify-between rounded-lg bg-white border border-[#DDDEE3] py-2 items-center w-[151px]'>
-              <p className='text-xs mx-5'>Semanal</p>
-              <svg width={24} height={24}><use href='#svg-down-arrow' /></svg>
-            </div> */}
-            <div className='relative flex flex-row justify-between rounded-lg bg-white border border-[#DDDEE3] py-2 items-center w-[151px]'>
-              <div className='flex justify-between items-center w-full h-full pr-3' onClick={() => setIsOpen(!isOpen)}>
-                <p className='text-xs mx-5'>Semanal</p>
-                <svg width={24} height={24}><use href='#svg-down-arrow' /></svg>
-              </div>
+            <button onClick={() => setSearchExtend(!searchExtend)}>
+              <svg width={40} height={40} className='block md:hidden'><use href='#svg-collapse' /></svg>
+            </button>
 
-              <div id="dropdown" className={`absolute bottom-0 z-1 translate-y-[103%] bg-white divide-y divide-gray-100 rounded-lg shadow w-full dark:bg-gray-700 ${!isOpen && 'hidden'}`}>
-                <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                  <li onClick={() => setIsOpen(false)}>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Todo Período</a>
-                  </li>
-                  <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Semanal</a>
-                  </li>
-                  <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mensal</a>
-                  </li>
-                  <Calendar />
-                </ul>
+            <div className="hidden sm:block">
+              {" "}
+              <div className="flex flex-row gap-2 ">
+                <div className='flex  flex-row rounded-lg bg-white border border-[#DDDEE3] p-2 items-center'>
+                  <svg width={24} height={24}><use href='#svg-left-arrow' /></svg>
+                  <p className='text-xs mx-5'>02/05/22 à 08/05/22</p>
+                  <svg width={24} height={24}><use href='#svg-right-arrow' /></svg>
+                </div>
+                <div className='relative flex flex-row justify-between rounded-lg bg-white border border-[#DDDEE3] py-2 items-center w-[151px]'>
+                  <div className='flex justify-between items-center w-full h-full pr-3' onClick={() => setIsOpen(!isOpen)}>
+                    <p className='text-sm mx-5'>Semanal</p>
+                    <svg width={24} height={24}><use href='#svg-down-arrow' /></svg>
+                  </div>
+
+                  <div id="dropdown" className={`absolute bottom-0 z-1 translate-y-[103%] bg-white divide-y divide-gray-100 rounded-lg shadow w-full dark:bg-gray-700 ${!isOpen && 'hidden'}`}>
+                    <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                      <li onClick={() => setIsOpen(false)}>
+                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Todo Período</a>
+                      </li>
+
+                      <Popover placement="left" content={() => (
+                        <div className='flex  flex-row rounded-lg bg-white border border-[#DDDEE3] p-2 items-center'>
+                          <svg width={24} height={24}><use href='#svg-left-arrow' /></svg>
+                          <p className='text-xs mx-5'>02/05/22 à 08/05/22</p>
+                          <svg width={24} height={24}><use href='#svg-right-arrow' /></svg>
+                        </div>
+                      )}>
+                        <div className='relative'>
+                          <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Semanal</a>
+                        </div>
+                      </Popover>
+                      <Popover placement="left" content={() => (
+                        <div className='flex  flex-row rounded-lg bg-white border border-[#DDDEE3] p-2 items-center'>
+                          <svg width={24} height={24}><use href='#svg-left-arrow' /></svg>
+                          <p className='text-xs mx-5'>02/05/22 à 08/05/22</p>
+                          <svg width={24} height={24}><use href='#svg-right-arrow' /></svg>
+                        </div>
+                      )}>
+                        <div className='relative'>
+                          <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mensal</a>
+                        </div>
+                      </Popover>
+                      <Calendar />
+                    </ul>
+                  </div>
+                </div>
+                <Select value={tipo} size='large'
+                  onChange={(value: string) => {
+                    setTipo(value);
+                  }}
+                  defaultValue="Tipo de transação"
+                >
+                  {/* <Select.Option value="tipo de transaco">Tipo de transaco</Select.Option> */}
+                  <Select.Option value="Deposito"><Checkbox /> Deposito</Select.Option>
+                  <Select.Option value="Pagemento Job"><Checkbox /> Pagemento Job</Select.Option>
+                </Select>
               </div>
             </div>
-            <Select value={tipo} size='large'
-              onChange={(value: string) => {
-                setTipo(value);
-              }}
-              defaultValue="Tipo de transação"
-            >
-              {/* <Select.Option value="tipo de transaco">Tipo de transaco</Select.Option> */}
-              <Select.Option value="Deposito"><Checkbox /> Deposito</Select.Option>
-              <Select.Option value="Pagemento Job"><Checkbox /> Pagemento Job</Select.Option>
-            </Select>
 
             <div className='relative mt-2'>
               <button onClick={() => { setDownloadbutton(!downloadbutton) }}>
@@ -131,54 +149,149 @@ export default function HomePage({ searchParams }: PageProps) {
               )}
             </div>
           </div>
-          <div className='flex flex-row gap-4 pb-5 px-5'>
-            <FinancialCard svg={"#svg-transacoes"} text={"Qtd. Transações"} value='250' />
-            <FinancialCard svg={"#svg-wallet"} text={"Saldo Inicial"} value='R$ 1.500,00' />
-            <FinancialCard svg={"#svg-transacoes"} text={"Entradas (R$)"} value='R$ 1.500,00' />
-            <FinancialCard svg={"#svg-transacoes"} text={"Saídas (R$)"} value='R$ 3.500,00' />
-            <FinancialCard svg={"#svg-transacoes"} text={"Total"} value='R$ 1.500,00' />
-            <FinancialCard svg={"#svg-transacoes"} text={"Saldo Final"} value='R$ 2.000,00' />
+          {searchExtend && (
+            <div className="block md:hidden m-4">
+              <div className="flex flex-col w-full gap-2">
+                <div className='relative flex flex-row justify-between rounded-lg bg-white border border-[#DDDEE3] py-2 items-center z-50'>
+                  <div className='flex justify-between items-center w-full h-full pr-3' onClick={() => setIsOpen(!isOpen)}>
+                    <p className='text-md mx-5'>Semanal</p>
+                    <svg width={24} height={24}><use href='#svg-down-arrow' /></svg>
+                  </div>
+
+                  <div id="dropdown" className={`absolute bottom-0 z-1 translate-y-[103%] bg-white divide-y divide-gray-100 rounded-lg shadow w-full dark:bg-gray-700 ${!isOpen && 'hidden'}`}>
+                    <ul className="mx-5 py-2 text-md text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                      <li onClick={() => setIsOpen(false)}>
+                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Todo Período</a>
+                      </li>
+                      <li>
+                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Semanal</a>
+                      </li>
+                      <li>
+                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mensal</a>
+                      </li>
+                      <Calendar />
+                    </ul>
+                  </div>
+                </div>
+                <Select value={tipo} size='large'
+                  onChange={(value: string) => {
+                    setTipo(value);
+                  }}
+                  defaultValue="Tipo de transação"
+                >
+                  {/* <Select.Option value="tipo de transaco">Tipo de transaco</Select.Option> */}
+                  <Select.Option value="Deposito"><Checkbox /> Deposito</Select.Option>
+                  <Select.Option value="Pagemento Job"><Checkbox /> Pagemento Job</Select.Option>
+                </Select>
+
+              </div>
+            </div>
+          )}
+          <div className="flex flex-row gap-4 pb-5 px-5">
+            <FinancialCard
+              svg={"#svg-transacoes"}
+              text={"Qtd. Transações"}
+              value="250"
+            />
+            <div className="hidden sm:block">
+              <div className="flex flex-row gap-4">
+                <FinancialCard
+                  svg={"#svg-wallet"}
+                  text={"Saldo Inicial"}
+                  value="R$ 1.500,00"
+                />
+                <FinancialCard
+                  svg={"#svg-transacoes"}
+                  text={"Entradas (R$)"}
+                  value="R$ 1.500,00"
+                />
+                <FinancialCard
+                  svg={"#svg-transacoes"}
+                  text={"Saídas (R$)"}
+                  value="R$ 3.500,00"
+                />
+                <FinancialCard
+                  svg={"#svg-transacoes"}
+                  text={"Total"}
+                  value="R$ 1.500,00"
+                />
+                <FinancialCard
+                  svg={"#svg-transacoes"}
+                  text={"Saldo Final"}
+                  value="R$ 2.000,00"
+                />
+              </div>
+            </div>
           </div>
           <div className='flex flex-col justify-between'>
-            <div className='flex-l px-5'>
-              <div className='grid grid-cols-12 gap-2'>
-                <p className='col-span-2 text-sm font-bold p-4'>Data</p>
-                <p className='col-span-4 text-sm font-bold p-4'>Descrição</p>
-                <p className='col-span-2 text-sm font-bold p-4'>Prestador</p>
-                <p className='col-span-1 text-sm font-bold p-4'>Tipo</p>
-                <p className='col-span-2 text-sm font-bold p-4 text-center'>Valor</p>
+            <div className='flex-l px-1 md:px-5'>
+              <div className='hidden md:block'>
+                <div className='grid grid-cols-12 gap-2'>
+                  <p className='col-span-2 text-sm font-bold p-4'>Data</p>
+                  <p className='col-span-4 text-sm font-bold p-4'>Descrição</p>
+                  <p className='col-span-2 text-sm font-bold p-4'>Prestador</p>
+                  <p className='col-span-1 text-sm font-bold p-4'>Tipo</p>
+                  <p className='col-span-2 text-sm font-bold p-4 text-center'>Valor</p>
+                </div>
               </div>
-
               <div>
                 <Detail clicked={clicked} setClicked={setClicked} transaction={transaction} />
               </div>
               {transactions.map((_transaction: Transaction, index) => (
-                <div key={index} className="w-full grid grid-cols-12 bg-white my-2 py-1">
-                  <p className='col-span-2 text-sm p-2 flex flex-row items-center gap-2'>
-                    <svg width={16} height={16}><use href='#svg-calendar' /></svg>
-                    <FormatDate dateString={`${_transaction.Data}`} time={`${_transaction.time}`} />
-                  </p>
-                  <p className='col-span-4 text-sm p-2 flex items-center'>{_transaction.Descricao}</p>
-                  <p className='col-span-2 text-sm p-2 flex items-center'>
-                    {_transaction.Tipo === 'Retirada' ? (
-                      <div className='flex flex-row gap-2 items-center'>
-                        <Image src="/avatar2.png" alt="avatar2" width={24} height={24} />
-                        <p className='text-sm'>{_transaction.Prestador}</p>
-                      </div>) : (<div></div>)}
-                  </p>
-                  <p className={`col-span-1 text-sm my-1 p-1 rounded-full px-4 justify-center flex items-center ${_transaction.Tipo === 'Retirada' ? 'bg-red-300 text-red-600' : 'bg-green-300 text-green-600'}`}>{_transaction.Tipo}</p>
-                  <p className={`col-span-2 text-sm p-2 font-bold ml-auto mr-6 flex items-center  ${_transaction.Valor > 0 ? 'text-green-600' : 'text-red-600'}`}>
-                    <FormatValue value={_transaction.Valor} />
-                  </p>
-                  <p className='col-span-1 text-sm p-2 ml-auto mr-2 flex items-center'>
-                    <button onClick={() => showDrawer(_transaction)}>
-                      <svg width={24} height={24}><use href='#svg-detail' /></svg>
-                    </button>
-                  </p>
+                <div>
+                  <div className='hidden md:block'>
+                    <div key={index} className="w-full grid grid-cols-12 bg-white my-1 py-1">
+                      <p className='col-span-2 text-sm p-2 flex flex-row items-center gap-2'>
+                        <svg width={16} height={16}><use href='#svg-calendar' /></svg>
+                        <FormatDate dateString={`${_transaction.Data}`} time={`${_transaction.time}`} />
+                      </p>
+                      <p className='col-span-4 text-sm p-2 flex items-center'>{_transaction.Descricao}</p>
+                      <p className='col-span-2 text-sm p-2 flex items-center'>
+                        {_transaction.Tipo === 'Retirada' ? (
+                          <div className='flex flex-row gap-2 items-center'>
+                            <Image src="/avatar2.png" alt="avatar2" width={24} height={24} />
+                            <p className='text-sm'>{_transaction.Prestador}</p>
+                          </div>) : (<div></div>)}
+                      </p>
+                      <p className={`col-span-1 text-sm my-1 p-1 rounded-full px-4 justify-center flex items-center ${_transaction.Tipo === 'Retirada' ? 'bg-red-300 text-red-600' : 'bg-green-300 text-green-600'}`}>{_transaction.Tipo}</p>
+                      <p className={`col-span-2 text-sm p-2 font-bold ml-auto mr-6 flex items-center  ${_transaction.Valor > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        <FormatValue value={_transaction.Valor} />
+                      </p>
+                      <p className='col-span-1 text-sm p-2 ml-auto mr-2 flex items-center'>
+                        <button onClick={() => showDrawer(_transaction)}>
+                          <svg width={24} height={24}><use href='#svg-detail' /></svg>
+                        </button>
+                      </p>
+                    </div>
+                  </div>
+                  <div className='block md:hidden' onClick={() => showDrawer(_transaction)}>
+                    <div key={index} className="w-full mx-auto bg-white my-2 rounded-lg">
+                      <p className='text-md px-4 py-2 flex items-center'>{_transaction.Descricao}</p>
+                      <div className='flex flex-row mx-6 my-4 justify-between '>
+                        <p className='text-md flex flex-row items-center gap-2'>
+                          <svg width={16} height={16}><use href='#svg-calendar' /></svg>
+                          <DetailedDate dateString={`${_transaction.Data}`} time={`${_transaction.time}`} />
+                        </p>
+                        <p className='text-md pr-4 pb-2 flex items-center '>
+                          {_transaction.Tipo === 'Retirada' ? (
+                            <div className='flex flex-row gap-2 items-center'>
+                              <Image src="/avatar2.png" alt="avatar2" width={24} height={24} />
+                              <p className='text-sm'>{_transaction.Prestador}</p>
+                            </div>) : (<div></div>)}
+                        </p>
+                      </div>
+                      <div className='flex flex-row justify-between mx-4 py-4 border-t-2 border-gray-300'>
+                        <p className={`text-md my-1 p-1 rounded-full px-4 justify-center flex items-center ${_transaction.Tipo === 'Retirada' ? 'bg-red-300 text-red-600' : 'bg-green-300 text-green-600'}`}>{_transaction.Tipo}</p>
+                        <p className={`text-md p-2 font-bold  flex items-center  ${_transaction.Valor > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                          <FormatValue value={_transaction.Valor} />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
-            <div className='ml-auto mr-10 mt-10'>
+            <div className='md:ml-auto md:mr-10 mt-4 mx-auto mb-1'>
               <PaginationBar href="/" page={page} pageCount={pageCount} />
             </div>
           </div>
