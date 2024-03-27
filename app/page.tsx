@@ -48,7 +48,7 @@ export default function HomePage({ searchParams }: PageProps) {
       setTransactions(transactions);
       setPageCount(pageCount);
     })();
-  }, []);
+  }, [page]);
 
   const items: MenuProps['items'] = [
     {
