@@ -23,7 +23,7 @@ const PAGE_SIZE = 10;
 
 export default function HomePage({ searchParams }: PageProps) {
 
-  const [isOpen, setIsOpen] = React.useState<boolean>(false);
+
   const [clicked, setClicked] = useState(false)
   // const transactions = await getTransactions();
   const page = searchParams.page ? parseInt(searchParams.page) : 1
@@ -34,6 +34,8 @@ export default function HomePage({ searchParams }: PageProps) {
   const [order, setOrder] = React.useState<string|undefined>(undefined);
 
   const [tipo, setTipo] = React.useState<string|undefined>(undefined);
+
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
   const showDrawer = (_transaction: Transaction) => {
     setTransaction(_transaction);
@@ -85,26 +87,28 @@ export default function HomePage({ searchParams }: PageProps) {
               <p className='text-xs mx-5'>Semanal</p>
               <svg width={24} height={24}><use href='#svg-down-arrow' /></svg>
             </div>
-            <Select value={'Todo'} size='large' 
-              defaultValue="Todo"
-              open={isOpen}
-            >
-              <Select.Option onClick={() => setIsOpen(false)} value="Todo">Todo Período</Select.Option>
-              <Select.Option onClick={() => setIsOpen(false)}  value="saaample">
-                <Dropdown 
-                  //@ts-ignore
-                  placement="left"
-                  menu={{items}}
-                >
-                  <div onClick={() => setIsOpen(true)} >topLeft</div>
-                </Dropdown>
-              </Select.Option>
-              <Select.Option>
-                <Calendar/>
-              </Select.Option>
-              <Select.Option onClick={() => setIsOpen(false)}  value="df">Mensal</Select.Option>
-              <Select.Option onClick={() => setIsOpen(false)}  value="rr">Personalizado</Select.Option>
-            </Select>
+            <div className='relative flex flex-row justify-between rounded-lg bg-white border border-[#DDDEE3] py-2 items-center w-[151px]'>
+              <div className='flex justify-between items-center w-full h-full pr-3' onClick={() => setIsOpen(true)}>
+                <p className='text-xs mx-5'>Semanal</p>
+                <svg width={24} height={24}><use href='#svg-down-arrow' /></svg>
+              </div>
+
+              <div id="dropdown" className={`absolute bottom-0 z-1 translate-y-[103%] bg-white divide-y divide-gray-100 rounded-lg shadow w-full dark:bg-gray-700 ${!isOpen && 'hidden'}`}>
+                <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                  <li onClick={() => setIsOpen(false)}>
+                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                  </li>
+                  <Calendar/>
+                  
+                  <li>
+                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                  </li>
+                  <li>
+                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
             <Select value={tipo} size='large' onChange={(value: string) => {
                 setTipo(value);
               }}

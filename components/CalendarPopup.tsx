@@ -14,6 +14,7 @@ import type { DatePickerProps } from 'antd';
 import { DatePicker, Space } from 'antd';
 import
 { Select, Dropdown, Button, MenuProps } from "antd";
+import {  Popover, ConfigProvider } from 'antd';
 
 export default function () {
 
@@ -49,12 +50,10 @@ export default function () {
   ];
 
   return (
-    <Dropdown 
-      //@ts-ignore
-      placement="left"
-      menu={{items}}
-    >
-      <div>topLeft</div>
-    </Dropdown>
+    <Popover placement="left" content={() => <DatePicker/>}>
+      <div className='relative'>
+        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+      </div>
+    </Popover>
   )
 }
