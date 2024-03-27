@@ -5,7 +5,7 @@ import { useState } from "react"
 const Sidebar = () => {
   const [clicked, setClicked] = useState('servico')
   return (
-    <div className="flex flex-col items-center w-[88px] bg-[#2E5E9E] h-screen">
+    <div className="flex flex-col items-center w-[88px]  bg-[#2E5E9E] h-screen">
       <div className="w-[88px] h-[72px] flex justify-center items-center border-b-2 border-b-gray-400">
         <svg width={40} height={40}><use href="#svg-logo" /></svg>
       </div>
