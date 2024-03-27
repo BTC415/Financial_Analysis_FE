@@ -11,8 +11,7 @@ import FormatValue from '@/components/FormatValue';
 import PaginationBar from '@/components/PaginationBar';
 import Detail from '@/components/Detail';
 import { Transaction } from '@/lib/transactions';
-import
-{ Select, Dropdown, Button, MenuProps } from "antd";
+import { Select, Dropdown, Button, MenuProps, Checkbox } from "antd";
 
 import Calendar from '@/components/CalendarPopup';
 
@@ -31,9 +30,9 @@ export default function HomePage({ searchParams }: PageProps) {
   const [downloadbutton, setDownloadbutton] = React.useState<boolean>(false)
   const [pageCount, setPageCount] = React.useState<number>(0);
   const [transaction, setTransaction] = React.useState<Transaction | undefined>(undefined);
-  const [order, setOrder] = React.useState<string|undefined>(undefined);
+  const [order, setOrder] = React.useState<string | undefined>(undefined);
 
-  const [tipo, setTipo] = React.useState<string|undefined>(undefined);
+  const [tipo, setTipo] = React.useState<string | undefined>(undefined);
 
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
@@ -83,12 +82,12 @@ export default function HomePage({ searchParams }: PageProps) {
               <p className='text-xs mx-5'>02/05/22 à 08/05/22</p>
               <svg width={24} height={24}><use href='#svg-right-arrow' /></svg>
             </div>
-            <div className='flex flex-row justify-between rounded-lg bg-white border border-[#DDDEE3] py-2 items-center w-[151px]'>
+            {/* <div className='flex flex-row justify-between rounded-lg bg-white border border-[#DDDEE3] py-2 items-center w-[151px]'>
               <p className='text-xs mx-5'>Semanal</p>
               <svg width={24} height={24}><use href='#svg-down-arrow' /></svg>
-            </div>
+            </div> */}
             <div className='relative flex flex-row justify-between rounded-lg bg-white border border-[#DDDEE3] py-2 items-center w-[151px]'>
-              <div className='flex justify-between items-center w-full h-full pr-3' onClick={() => setIsOpen(true)}>
+              <div className='flex justify-between items-center w-full h-full pr-3' onClick={() => setIsOpen(!isOpen)}>
                 <p className='text-xs mx-5'>Semanal</p>
                 <svg width={24} height={24}><use href='#svg-down-arrow' /></svg>
               </div>
@@ -96,43 +95,29 @@ export default function HomePage({ searchParams }: PageProps) {
               <div id="dropdown" className={`absolute bottom-0 z-1 translate-y-[103%] bg-white divide-y divide-gray-100 rounded-lg shadow w-full dark:bg-gray-700 ${!isOpen && 'hidden'}`}>
                 <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                   <li onClick={() => setIsOpen(false)}>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                  </li>
-                  <Calendar/>
-                  
-                  <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Todo Período</a>
                   </li>
                   <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
+                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Semanal</a>
                   </li>
+                  <li>
+                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mensal</a>
+                  </li>
+                  <Calendar />
                 </ul>
               </div>
             </div>
-            <Select value={tipo} size='large' onChange={(value: string) => {
+            <Select value={tipo} size='large'
+              onChange={(value: string) => {
                 setTipo(value);
               }}
-              defaultValue="tipo de transaco"
+              defaultValue="Tipo de transação"
             >
-              <Select.Option value="tipo de transaco">Tipo de transaco</Select.Option>
-              <Select.Option value="saaample">asdf</Select.Option>
-              <Select.Option value="df">asdf</Select.Option>
-              <Select.Option value="rr">erer</Select.Option>
+              {/* <Select.Option value="tipo de transaco">Tipo de transaco</Select.Option> */}
+              <Select.Option value="Deposito"><Checkbox /> Deposito</Select.Option>
+              <Select.Option value="Pagemento Job"><Checkbox /> Pagemento Job</Select.Option>
             </Select>
-            {/* <Dropdown label="Dropdown button" renderTrigger={() => (
-                <div className='flex flex-row justify-between rounded-lg bg-white border border-[#DDDEE3] py-2 items-center w-[151px]'>
-                  <p className='text-xs ml-2'>Tipo de transação</p>
-                  <svg width={24} height={24}><use href='#svg-down-arrow' /></svg>
-                </div>
-              )}
-            >
-              <Dropdown.Item>Dashboard</Dropdown.Item>
-              <Dropdown.Item>Settings</Dropdown.Item>
-              <Dropdown.Item>Earnings</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item>Separated link</Dropdown.Item>
-            </Dropdown> */}
-            
+
             <div className='relative mt-2'>
               <button onClick={() => { setDownloadbutton(!downloadbutton) }}>
                 <svg width={40} height={40}><use href='#svg-download' /></svg>
