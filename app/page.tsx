@@ -182,41 +182,38 @@ export default function HomePage({ searchParams }: PageProps) {
               </div>
             </div>
           )}
-          <div className="flex flex-row gap-4 pb-5 px-5">
+         
+          <div className='flex flex-row overflow-x-auto w-[calc(100vw-8px)] md:w-[calc(100vw-96px)] gap-4 '>
             <FinancialCard
               svg={"#svg-transacoes"}
               text={"Qtd. Transações"}
               value="250"
             />
-            <div className="hidden sm:block">
-              <div className="flex flex-row gap-4">
-                <FinancialCard
-                  svg={"#svg-saldo"}
-                  text={"Saldo Inicial"}
-                  value="R$ 1.500,00"
-                />
-                <FinancialCard
-                  svg={"#svg-entradas"}
-                  text={"Entradas (R$)"}
-                  value="R$ 1.500,00"
-                />
-                <FinancialCard
-                  svg={"#svg-saidas"}
-                  text={"Saídas (R$)"}
-                  value="R$ 3.500,00"
-                />
-                <FinancialCard
-                  svg={"#svg-total"}
-                  text={"Total"}
-                  value="R$ 1.500,00"
-                />
-                <FinancialCard
-                  svg={"#svg-saldo-final"}
-                  text={"Saldo Final"}
-                  value="R$ 2.000,00"
-                />
-              </div>
-            </div>
+            <FinancialCard
+              svg={"#svg-saldo"}
+              text={"Saldo Inicial"}
+              value="R$ 1.500,00"
+            />
+            <FinancialCard
+              svg={"#svg-entradas"}
+              text={"Entradas (R$)"}
+              value="R$ 1.500,00"
+            />
+            <FinancialCard
+              svg={"#svg-saidas"}
+              text={"Saídas (R$)"}
+              value="R$ 3.500,00"
+            />
+            <FinancialCard
+              svg={"#svg-total"}
+              text={"Total"}
+              value="R$ 1.500,00"
+            />
+            <FinancialCard
+              svg={"#svg-saldo-final"}
+              text={"Saldo Final"}
+              value="R$ 2.000,00"
+            />
           </div>
           <div className='flex flex-col justify-between'>
             <div className='flex-l px-1 md:px-5'>
