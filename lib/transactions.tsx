@@ -18,7 +18,7 @@ export async function getTransactions(pageSize: number, page: number): Promise<P
   // Fetch data from JSON
 
   const pageCount = Math.ceil(data.transactions.length / pageSize);
-  const transactions: Transaction[] = [];
+  let transactions: Transaction[] = [];
   const start = (page - 1) * pageSize;
   const end = Math.min(page * pageSize, data.transactions.length)
 

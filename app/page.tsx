@@ -1,54 +1,58 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import Image from 'next/image';
+import { Select, Popover, MenuProps, Checkbox } from "antd";
+
 import { getTransactions } from '@/lib/transactions'
 import FinancialCard from '@/components/FinancialCard';
 import Navbar from '@/components/Navbar';
 import Sidebar from '@/components/Sidebar';
-import FormatDate from '@/components/FormatDate';
+import { FormatDate, DetailedDate } from '@/components/FormatDate';
 import FormatValue from '@/components/FormatValue';
 import PaginationBar from '@/components/PaginationBar';
 import Detail from '@/components/Detail';
 import { Transaction } from '@/lib/transactions';
-import { Select, Popover, Button, MenuProps, Checkbox } from "antd";
-
 import Calendar from '@/components/CalendarPopup';
-import DetailedDate from '@/components/DetailedDate';
+import Semanal from '@/components/Semanal';
+import Mensal from '@/components/Mensal'
+import Custom from '@/components/Custom'
 
 interface PageProps {
   searchParams: { page?: string };
 }
+
 const PAGE_SIZE = 10;
 
 export default function HomePage({ searchParams }: PageProps) {
   const [clicked, setClicked] = useState(false)
-  // const transactions = await getTransactions();
-  const page = searchParams.page ? parseInt(searchParams.page) : 1
   const [transactions, setTransactions] = React.useState<Transaction[]>([]);
   const [downloadbutton, setDownloadbutton] = React.useState<boolean>(false)
   const [pageCount, setPageCount] = React.useState<number>(0);
   const [transaction, setTransaction] = React.useState<Transaction | undefined>(undefined);
-  const [order, setOrder] = React.useState<string | undefined>(undefined);
+  const [periodOption, setPeriodOption] = React.useState<string | undefined>("Semanal");
   const [tipo, setTipo] = React.useState<string | undefined>(undefined);
-  const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const [isPeriodDropdownOpen, setIsPeriodDropdownOpen] = React.useState<boolean>(false);
   const [searchExtend, setSearchExtend] = React.useState<boolean>(false);
+
+  const page = searchParams.page ? parseInt(searchParams.page) : 1
+
 
   const showDrawer = (_transaction: Transaction) => {
     setTransaction(_transaction);
     setClicked(true)
-
-    console.log(_transaction);
   }
 
+  const handlePeriodChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setPeriodOption(e.target.value);
+  }
   React.useEffect(() => {
     (async () => {
       const { transactions, pageCount } = await getTransactions(PAGE_SIZE, page);
-      console.log(transactions)
       setTransactions(transactions);
       setPageCount(pageCount);
     })();
-  }, []);
+  }, [page]);
 
   const items: MenuProps['items'] = [
     {
@@ -65,7 +69,7 @@ export default function HomePage({ searchParams }: PageProps) {
 
   return (
     <>
-      <div className={`flex flex-row ${clicked ? 'bg-opacity-50 bg-gray-600':''}`}>
+      <div className={`flex flex-row ${clicked ? 'bg-opacity-50 bg-gray-600' : ''}`}>
         <div className='w-[88px] hidden lg:block'>
           <Sidebar />
         </div>
@@ -80,49 +84,40 @@ export default function HomePage({ searchParams }: PageProps) {
             <div className="hidden sm:block">
               {" "}
               <div className="flex flex-row gap-2 ">
-                <div className='flex  flex-row rounded-lg bg-white border border-[#DDDEE3] p-2 items-center'>
-                  <svg width={24} height={24}><use href='#svg-left-arrow' /></svg>
-                  <p className='text-xs mx-5'>02/05/22 à 08/05/22</p>
-                  <svg width={24} height={24}><use href='#svg-right-arrow' /></svg>
-                </div>
-                <div className='relative flex flex-row justify-between rounded-lg bg-white border border-[#DDDEE3] py-2 items-center w-[151px]'>
-                  <div className='flex justify-between items-center w-full h-full pr-3' onClick={() => setIsOpen(!isOpen)}>
-                    <p className='text-sm mx-5'>Semanal</p>
+                {
+                  periodOption === "Semanal" ? <Semanal /> : (periodOption === "Mensal" ? <Mensal /> : <Custom />)
+                }
+                {/* <div className='relative flex flex-row justify-between rounded-lg bg-white border border-[#DDDEE3] py-2 items-center w-[151px]'> */}
+                {/* <div className='flex justify-between items-center w-full h-full pr-3' onClick={() => setIsPeriodDropdownOpen(!isPeriodDropdownOpen)}>
+                    <p className='text-sm mx-auto'>Todo Período</p>
                     <svg width={24} height={24}><use href='#svg-down-arrow' /></svg>
-                  </div>
-
-                  <div id="dropdown" className={`absolute bottom-0 z-1 translate-y-[103%] bg-white divide-y divide-gray-100 rounded-lg shadow w-full dark:bg-gray-700 ${!isOpen && 'hidden'}`}>
+                  </div> */}
+                <div className="max-w-sm mx-auto">
+                  <select
+                    id="periods"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    onChange={handlePeriodChange}
+                    value={periodOption}
+                  >
+                    <option selected disabled>Todo Período</option>
+                    <option value="Semanal">Semanal</option>
+                    <option value="Mensal">Mensal</option>
+                    <option value="Personalizado">Personalizado</option>
+                  </select>
+                </div>
+                {/* <div id="dropdown" className={`absolute bottom-0 z-1 translate-y-[103%] bg-white divide-y divide-gray-100 rounded-lg shadow w-full dark:bg-gray-700 ${!isPeriodDropdownOpen && 'hidden'}`}>
                     <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                      <li onClick={() => setIsOpen(false)}>
-                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Todo Período</a>
-                      </li>
+                      <div className='relative'>
+                        <div className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onClick={() => setPeriodOption("Semanal")}>Semanal</div>
+                      </div>
+                      <div className='relative'>
+                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mensal</a>
+                      </div>
 
-                      <Popover placement="left" content={() => (
-                        <div className='flex  flex-row rounded-lg bg-white border border-[#DDDEE3] p-2 items-center'>
-                          <svg width={24} height={24}><use href='#svg-left-arrow' /></svg>
-                          <p className='text-xs mx-5'>02/05/22 à 08/05/22</p>
-                          <svg width={24} height={24}><use href='#svg-right-arrow' /></svg>
-                        </div>
-                      )}>
-                        <div className='relative'>
-                          <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Semanal</a>
-                        </div>
-                      </Popover>
-                      <Popover placement="left" content={() => (
-                        <div className='flex  flex-row rounded-lg bg-white border border-[#DDDEE3] p-2 items-center'>
-                          <svg width={24} height={24}><use href='#svg-left-arrow' /></svg>
-                          <p className='text-xs mx-5'>02/05/22 à 08/05/22</p>
-                          <svg width={24} height={24}><use href='#svg-right-arrow' /></svg>
-                        </div>
-                      )}>
-                        <div className='relative'>
-                          <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mensal</a>
-                        </div>
-                      </Popover>
                       <Calendar />
                     </ul>
-                  </div>
-                </div>
+                  </div> */}
+                {/* </div> */}
                 <Select value={tipo} size='large'
                   onChange={(value: string) => {
                     setTipo(value);
@@ -153,14 +148,14 @@ export default function HomePage({ searchParams }: PageProps) {
             <div className="block md:hidden m-4">
               <div className="flex flex-col w-full gap-2">
                 <div className='relative flex flex-row justify-between rounded-lg bg-white border border-[#DDDEE3] py-2 items-center z-50'>
-                  <div className='flex justify-between items-center w-full h-full pr-3' onClick={() => setIsOpen(!isOpen)}>
+                  <div className='flex justify-between items-center w-full h-full pr-3' onClick={() => setIsPeriodDropdownOpen(!isPeriodDropdownOpen)}>
                     <p className='text-md mx-5'>Semanal</p>
                     <svg width={24} height={24}><use href='#svg-down-arrow' /></svg>
                   </div>
 
-                  <div id="dropdown" className={`absolute bottom-0 z-1 translate-y-[103%] bg-white divide-y divide-gray-100 rounded-lg shadow w-full dark:bg-gray-700 ${!isOpen && 'hidden'}`}>
+                  <div id="dropdown" className={`absolute bottom-0 z-1 translate-y-[103%] bg-white divide-y divide-gray-100 rounded-lg shadow w-full dark:bg-gray-700 ${!isPeriodDropdownOpen && 'hidden'}`}>
                     <ul className="mx-5 py-2 text-md text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                      <li onClick={() => setIsOpen(false)}>
+                      <li onClick={() => setIsPeriodDropdownOpen(false)}>
                         <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Todo Período</a>
                       </li>
                       <li>
@@ -196,27 +191,27 @@ export default function HomePage({ searchParams }: PageProps) {
             <div className="hidden sm:block">
               <div className="flex flex-row gap-4">
                 <FinancialCard
-                  svg={"#svg-wallet"}
+                  svg={"#svg-saldo"}
                   text={"Saldo Inicial"}
                   value="R$ 1.500,00"
                 />
                 <FinancialCard
-                  svg={"#svg-transacoes"}
+                  svg={"#svg-entradas"}
                   text={"Entradas (R$)"}
                   value="R$ 1.500,00"
                 />
                 <FinancialCard
-                  svg={"#svg-transacoes"}
+                  svg={"#svg-saidas"}
                   text={"Saídas (R$)"}
                   value="R$ 3.500,00"
                 />
                 <FinancialCard
-                  svg={"#svg-transacoes"}
+                  svg={"#svg-total"}
                   text={"Total"}
                   value="R$ 1.500,00"
                 />
                 <FinancialCard
-                  svg={"#svg-transacoes"}
+                  svg={"#svg-saldo-final"}
                   text={"Saldo Final"}
                   value="R$ 2.000,00"
                 />

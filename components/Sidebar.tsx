@@ -10,10 +10,10 @@ const Sidebar = () => {
         <svg width={40} height={40}><use href="#svg-logo" /></svg>
       </div>
       <div className="mt-8 w-[88px] ">
-        <button className={`w-[88px] h-[72px] flex items-center justify-center ${clicked === "servico" ? 'border-lime-400 border-l-4' : ''}`} onClick={() => setClicked('servico')}>
+        <button className={`w-[88px] h-[72px] flex items-center justify-center ${clicked === "servico" ? 'border-lime-400 border-l-4' : ''}`} >
           <svg width={24} height={24} className="mx-auto items-center"><use href={`${clicked === "servico" ? '#svg-servico-yellow' : '#svg-servico'} `} /></svg>
         </button>
-        <button className={`w-[88px] h-[72px] flex items-center justify-center ${clicked === "historico" ? 'border-lime-400 border-l-4' : ''}`} onClick={() => setClicked('historico')}>
+        <button className={`w-[88px] h-[72px] flex items-center justify-center ${clicked === "historico" ? 'border-lime-400 border-l-4' : ''}`}>
           <svg width={24} height={24} className="mx-auto "><use href={`${clicked === "historico" ? '#svg-historico-yellow' : '#svg-historico'} `} /></svg>
         </button>
         <button className={`w-[88px] h-[72px] flex items-center justify-center ${clicked === "wallet" ? 'border-lime-400 border-l-4' : ''}`} onClick={() => setClicked('wallet')}>

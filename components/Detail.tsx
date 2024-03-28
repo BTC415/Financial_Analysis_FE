@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { Transaction } from '@/lib/transactions';
 import { Dispatch, SetStateAction } from 'react';
-import DetailedDate from './DetailedDate';
+import {DetailedDate} from '@/components/FormatDate';
 
 interface DetailProps {
   transaction: Transaction | undefined;
