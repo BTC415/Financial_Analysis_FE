@@ -73,7 +73,7 @@ export default function HomePage({ searchParams }: PageProps) {
         <div className='w-[88px] hidden lg:block'>
           <Sidebar />
         </div>
-        <div className='flex-grow bg-[#F3F3F5]'>
+        <div className='flex-grow bg-[#F3F3F5] '>
           <Navbar />
           <div className='flex items-center p-3 mx-2 gap-3'>
             <p className='font-bold text-xl flex flex-grow font-Inter text-sm/[20px] leading-6'>Extracto</p>
@@ -187,7 +187,7 @@ export default function HomePage({ searchParams }: PageProps) {
             </div>
           )}
 
-          <div className='flex flex-row overflow-x-auto w-[calc(100vw-8px)] md:w-[calc(100vw-96px)] justify-evenly'>
+          <div className='flex flex-row overflow-x-auto w-[calc(100vw-8px)] md:w-[calc(100vw-96px)] gap-12 pl-6'>
             <FinancialCard
               svg={"#svg-transacoes"}
               text={"Qtd. Transações"}
@@ -288,7 +288,7 @@ export default function HomePage({ searchParams }: PageProps) {
               ))}
             </div>
           </div>
-          <div className='absolute md:ml-auto md:mr-10 mt-4 mb-1 bottom-10 right-0 text-sm font-Inter'>
+          <div className='fixed md:ml-auto md:mr-10 mt-4 mb-1 bottom-5 right-0 text-sm font-Inter'>
             <PaginationBar href="/" page={page} pageCount={pageCount} />
           </div>
         </div>
