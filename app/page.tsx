@@ -60,7 +60,7 @@ export default function HomePage({ searchParams }: PageProps) {
       label: (
         <div className='flex  flex-row rounded-lg bg-white items-center'>
           <svg width={24} height={24}><use href='#svg-left-arrow' /></svg>
-          <p className='text-xs mx-5'>02/05/22 à 08/05/22</p>
+          <p className='text-xs mx-5 font-Inter text-xs/[12px] leading-4'>02/05/22 à 08/05/22</p>
           <svg width={24} height={24}><use href='#svg-right-arrow' /></svg>
         </div>
       ),
@@ -76,7 +76,7 @@ export default function HomePage({ searchParams }: PageProps) {
         <div className='flex-grow bg-[#F3F3F5]'>
           <Navbar />
           <div className='flex items-center p-3 mx-2 gap-3'>
-            <p className='font-bold text-xl flex flex-grow'>Extracto</p>
+            <p className='font-bold text-xl flex flex-grow font-Inter text-sm/[20px] leading-6'>Extracto</p>
             <button onClick={() => setSearchExtend(!searchExtend)}>
               <svg width={40} height={40} className='block md:hidden'><use href='#svg-collapse' /></svg>
             </button>
@@ -99,10 +99,10 @@ export default function HomePage({ searchParams }: PageProps) {
                     onChange={handlePeriodChange}
                     value={periodOption}
                   >
-                    <option selected disabled>Todo Período</option>
-                    <option value="Semanal">Semanal</option>
-                    <option value="Mensal">Mensal</option>
-                    <option value="Personalizado">Personalizado</option>
+                    {/* <option selected disabled>Todo Período</option> */}
+                    <option value="Semanal" className='font-Inter text-xs/[12px] leading-[4.5rem]'>Semanal</option>
+                    <option value="Mensal" className='font-Inter text-xs/[12px] leading-[4.5rem]'>Mensal</option>
+                    <option value="Personalizado" className='font-Inter text-xs/[12px] leading-[4.5rem]'>Personalizado</option>
                   </select>
                 </div>
                 {/* <div id="dropdown" className={`absolute bottom-0 z-1 translate-y-[103%] bg-white divide-y divide-gray-100 rounded-lg shadow w-full dark:bg-gray-700 ${!isPeriodDropdownOpen && 'hidden'}`}>
@@ -125,8 +125,10 @@ export default function HomePage({ searchParams }: PageProps) {
                   defaultValue="Tipo de transação"
                 >
                   {/* <Select.Option value="tipo de transaco">Tipo de transaco</Select.Option> */}
-                  <Select.Option value="Deposito"><Checkbox /> Deposito</Select.Option>
-                  <Select.Option value="Pagemento Job"><Checkbox /> Pagemento Job</Select.Option>
+                  {/* <Select.Option value="Deposito"><Checkbox /> Deposito</Select.Option> */}
+                  <Select.Option value="Deposito">Deposito</Select.Option>
+                  {/* <Select.Option value="Pagemento Job"><Checkbox /> Pagemento Job</Select.Option> */}
+                  <Select.Option value="Pagemento Job">Pagemento Job</Select.Option>
                 </Select>
               </div>
             </div>
@@ -137,8 +139,8 @@ export default function HomePage({ searchParams }: PageProps) {
               </button>
               {downloadbutton && (<>
                 <div className='flex flex-col w-28 bg-white rounded-sm absolute top-[40px] right-0'>
-                  <button className=' p-2 text-left'>PDF</button>
-                  <button className=' p-2 text-left'>Excel</button>
+                  <button className='p-2 text-left font-Inter text-xs/[12px]'>PDF</button>
+                  <button className='p-2 text-left font-Inter text-xs/[12px]'>Excel</button>
                 </div>
               </>
               )}
@@ -149,20 +151,19 @@ export default function HomePage({ searchParams }: PageProps) {
               <div className="flex flex-col w-full gap-2">
                 <div className='relative flex flex-row justify-between rounded-lg bg-white border border-[#DDDEE3] py-2 items-center z-50'>
                   <div className='flex justify-between items-center w-full h-full pr-3' onClick={() => setIsPeriodDropdownOpen(!isPeriodDropdownOpen)}>
-                    <p className='text-md mx-5'>Semanal</p>
+                    <p className='text-md mx-5 font-Inter text-xs/[12px] leading-[4.5rem]'>Semanal</p>
                     <svg width={24} height={24}><use href='#svg-down-arrow' /></svg>
                   </div>
-
                   <div id="dropdown" className={`absolute bottom-0 z-1 translate-y-[103%] bg-white divide-y divide-gray-100 rounded-lg shadow w-full dark:bg-gray-700 ${!isPeriodDropdownOpen && 'hidden'}`}>
                     <ul className="mx-5 py-2 text-md text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                      <li onClick={() => setIsPeriodDropdownOpen(false)}>
-                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Todo Período</a>
+                      {/* <li onClick={() => setIsPeriodDropdownOpen(false)}>
+                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white font-Inter text-xs/[12px] leading-[4.5rem]">Todo Período</a>
+                      </li> */}
+                      <li>
+                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white font-Inter text-xs/[12px] leading-[4.5rem]">Semanal</a>
                       </li>
                       <li>
-                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Semanal</a>
-                      </li>
-                      <li>
-                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mensal</a>
+                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white font-Inter text-xs/[12px] leading-[4.5rem]">Mensal</a>
                       </li>
                       <Calendar />
                     </ul>
@@ -173,17 +174,20 @@ export default function HomePage({ searchParams }: PageProps) {
                     setTipo(value);
                   }}
                   defaultValue="Tipo de transação"
+                  className='font-Inter text-xs/[12px] leading-[4.5rem]'
                 >
                   {/* <Select.Option value="tipo de transaco">Tipo de transaco</Select.Option> */}
-                  <Select.Option value="Deposito"><Checkbox /> Deposito</Select.Option>
-                  <Select.Option value="Pagemento Job"><Checkbox /> Pagemento Job</Select.Option>
+                  {/* <Select.Option value="Deposito"><Checkbox /> Deposito</Select.Option> */}
+                  <Select.Option value="Deposito">Deposito</Select.Option>
+                  {/* <Select.Option value="Pagemento Job"><Checkbox /> Pagemento Job</Select.Option> */}
+                  <Select.Option value="Pagemento Job">Pagemento Job</Select.Option>
                 </Select>
 
               </div>
             </div>
           )}
-         
-          <div className='flex flex-row overflow-x-auto w-[calc(100vw-8px)] md:w-[calc(100vw-96px)] gap-4 '>
+
+          <div className='flex flex-row overflow-x-auto w-[calc(100vw-8px)] md:w-[calc(100vw-96px)] justify-evenly'>
             <FinancialCard
               svg={"#svg-transacoes"}
               text={"Qtd. Transações"}
@@ -232,21 +236,21 @@ export default function HomePage({ searchParams }: PageProps) {
               {transactions.map((_transaction: Transaction, index) => (
                 <div>
                   <div className='hidden md:block'>
-                    <div key={index} className="w-full grid grid-cols-12 bg-white my-1 py-1">
-                      <p className='col-span-2 text-sm p-2 flex flex-row items-center gap-2'>
+                    <div key={index} className="w-full grid grid-cols-12 bg-white my-1 py-1" onClick={() => showDrawer(_transaction)}>
+                      <p className='col-span-2 text-sm p-2 flex flex-row items-center gap-2 font-Inter'>
                         <svg width={16} height={16}><use href='#svg-calendar' /></svg>
                         <FormatDate dateString={`${_transaction.Data}`} time={`${_transaction.time}`} />
                       </p>
-                      <p className='col-span-4 text-sm p-2 flex items-center'>{_transaction.Descricao}</p>
-                      <p className='col-span-2 text-sm p-2 flex items-center'>
+                      <p className='col-span-4 text-sm p-2 flex items-center font-Inter'>{_transaction.Descricao}</p>
+                      <p className='col-span-2 text-sm p-2 flex items-center font-Inter'>
                         {_transaction.Tipo === 'Retirada' ? (
                           <div className='flex flex-row gap-2 items-center'>
                             <Image src="/avatar2.png" alt="avatar2" width={24} height={24} />
                             <p className='text-sm'>{_transaction.Prestador}</p>
                           </div>) : (<div></div>)}
                       </p>
-                      <p className={`col-span-1 text-sm my-1 p-1 rounded-full px-4 justify-center flex items-center ${_transaction.Tipo === 'Retirada' ? 'bg-red-300 text-red-600' : 'bg-green-300 text-green-600'}`}>{_transaction.Tipo}</p>
-                      <p className={`col-span-2 text-sm p-2 font-bold ml-auto mr-6 flex items-center  ${_transaction.Valor > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                      <p className={`col-span-1 text-sm font-Inter my-1 p-1 rounded-full px-4 justify-center flex items-center ${_transaction.Tipo === 'Retirada' ? 'bg-red-300 text-red-600' : 'bg-green-300 text-green-600'}`}>{_transaction.Tipo}</p>
+                      <p className={`col-span-2 text-sm p-2 font-bold ml-auto mr-6 flex items-center  ${_transaction.Valor > 0 ? 'text-green-600' : 'text-red-600 font-Inter'}`}>
                         <FormatValue value={_transaction.Valor} />
                       </p>
                       <p className='col-span-1 text-sm p-2 ml-auto mr-2 flex items-center'>
@@ -258,13 +262,13 @@ export default function HomePage({ searchParams }: PageProps) {
                   </div>
                   <div className='block md:hidden' onClick={() => showDrawer(_transaction)}>
                     <div key={index} className="w-full mx-auto bg-white my-2 rounded-lg">
-                      <p className='text-md px-4 py-2 flex items-center'>{_transaction.Descricao}</p>
+                      <p className='text-sm px-4 py-2 flex items-center'>{_transaction.Descricao}</p>
                       <div className='flex flex-row mx-6 my-4 justify-between '>
-                        <p className='text-md flex flex-row items-center gap-2'>
+                        <p className='text-sm flex flex-row items-center gap-2 font-Inter'>
                           <svg width={16} height={16}><use href='#svg-calendar' /></svg>
                           <DetailedDate dateString={`${_transaction.Data}`} time={`${_transaction.time}`} />
                         </p>
-                        <p className='text-md pr-4 pb-2 flex items-center '>
+                        <p className='text-sm pr-4 pb-2 flex items-center font-Inter'>
                           {_transaction.Tipo === 'Retirada' ? (
                             <div className='flex flex-row gap-2 items-center'>
                               <Image src="/avatar2.png" alt="avatar2" width={24} height={24} />
@@ -273,8 +277,8 @@ export default function HomePage({ searchParams }: PageProps) {
                         </p>
                       </div>
                       <div className='flex flex-row justify-between mx-4 py-4 border-t-2 border-gray-300'>
-                        <p className={`text-md my-1 p-1 rounded-full px-4 justify-center flex items-center ${_transaction.Tipo === 'Retirada' ? 'bg-red-300 text-red-600' : 'bg-green-300 text-green-600'}`}>{_transaction.Tipo}</p>
-                        <p className={`text-md p-2 font-bold  flex items-center  ${_transaction.Valor > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        <p className={`text-xs font-Inter my-1 p-1 rounded-full px-4 justify-center flex items-center ${_transaction.Tipo === 'Retirada' ? 'bg-red-300 text-red-600' : 'bg-green-300 text-green-600'}`}>{_transaction.Tipo}</p>
+                        <p className={`text-sm font-Inter p-2 font-bold  flex items-center  ${_transaction.Valor > 0 ? 'text-green-600' : 'text-red-600'}`}>
                           <FormatValue value={_transaction.Valor} />
                         </p>
                       </div>
@@ -283,9 +287,9 @@ export default function HomePage({ searchParams }: PageProps) {
                 </div>
               ))}
             </div>
-            <div className='md:ml-auto md:mr-10 mt-4 mx-auto mb-1'>
-              <PaginationBar href="/" page={page} pageCount={pageCount} />
-            </div>
+          </div>
+          <div className='absolute md:ml-auto md:mr-10 mt-4 mb-1 bottom-10 right-0 text-sm font-Inter'>
+            <PaginationBar href="/" page={page} pageCount={pageCount} />
           </div>
         </div>
       </div >

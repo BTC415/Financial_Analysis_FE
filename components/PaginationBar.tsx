@@ -27,7 +27,7 @@ export default function PaginationBar({ href, page, pageCount }: PaginationBarPr
         <ChevronRightIcon className="h-10 w-10" />
       </PaginationLink>
       <PaginationLink href={`${href}?page=${pageCount}`} page={page}
-        enabled={page < pageCount}>
+        enabled={page < pageCount} >
         <ChevronDoubleRightIcon className="h-10 w-10" />
       </PaginationLink>
     </div>
