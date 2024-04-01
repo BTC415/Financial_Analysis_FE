@@ -58,9 +58,9 @@ export default function HomePage({ searchParams }: PageProps) {
     {
       key: '1',
       label: (
-        <div className='flex  flex-row rounded-lg bg-white items-center'>
+        <div className='flex  flex-row rounded-[10rem] bg-white items-center'>
           <svg width={24} height={24}><use href='#svg-left-arrow' /></svg>
-          <p className='text-xs mx-5 font-Inter text-xs/[12px] leading-4'>02/05/22 à 08/05/22</p>
+          <p>02/05/22 à 08/05/22</p>
           <svg width={24} height={24}><use href='#svg-right-arrow' /></svg>
         </div>
       ),
@@ -73,17 +73,17 @@ export default function HomePage({ searchParams }: PageProps) {
         <div className='w-[88px] hidden lg:block'>
           <Sidebar />
         </div>
-        <div className='flex-grow bg-[#F3F3F5] '>
+        <div className='flex-grow bg-[#F3F3F5] md:none relative w-full'>
           <Navbar />
-          <div className='flex items-center p-3 mx-2 gap-3'>
-            <p className='font-bold text-xl flex flex-grow font-Inter text-sm/[20px] leading-6'>Extracto</p>
+          <div className='flex items-center p-[2rem] mx-[2rem] gap-[2rem] px-[1rem] md:px-[3rem]'>
+            <p className='font-bold text-[4rem] flex flex-grow'>Extracto</p>
             <button onClick={() => setSearchExtend(!searchExtend)}>
-              <svg width={40} height={40} className='block md:hidden'><use href='#svg-collapse' /></svg>
+              <svg width={30} height={30} className='block md:hidden'><use href='#svg-collapse' /></svg>
             </button>
 
-            <div className="hidden sm:block">
+            <div className="hidden md:block">
               {" "}
-              <div className="flex flex-row gap-2 ">
+              <div className="flex flex-row gap-[2rem] ">
                 {
                   periodOption === "Semanal" ? <Semanal /> : (periodOption === "Mensal" ? <Mensal /> : <Custom />)
                 }
@@ -92,19 +92,20 @@ export default function HomePage({ searchParams }: PageProps) {
                     <p className='text-sm mx-auto'>Todo Período</p>
                     <svg width={24} height={24}><use href='#svg-down-arrow' /></svg>
                   </div> */}
-                <div className="max-w-sm mx-auto">
-                  <select
-                    id="periods"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    onChange={handlePeriodChange}
-                    value={periodOption}
-                  >
-                    {/* <option selected disabled>Todo Período</option> */}
-                    <option value="Semanal" className='font-Inter text-xs/[12px] leading-[4.5rem]'>Semanal</option>
-                    <option value="Mensal" className='font-Inter text-xs/[12px] leading-[4.5rem]'>Mensal</option>
-                    <option value="Personalizado" className='font-Inter text-xs/[12px] leading-[4.5rem]'>Personalizado</option>
-                  </select>
-                </div>
+                
+                <Select value={periodOption} 
+                  onChange={(value: string) => {
+                    setPeriodOption(value);
+                  }}
+                >
+                  <Select.Option value="Semanal">Semanal</Select.Option>
+                  <Select.Option value="Mensal">Mensal</Select.Option>
+                  {/* <Select.Option value="Deposito">Deposito</Select.Option> */}
+                  <Select.Option value="Personalizado">Personalizado</Select.Option>
+                  {/* <Select.Option value="Pagemento Job">Pagemento Job</Select.Option> */}
+                </Select>
+                
+               
                 {/* <div id="dropdown" className={`absolute bottom-0 z-1 translate-y-[103%] bg-white divide-y divide-gray-100 rounded-lg shadow w-full dark:bg-gray-700 ${!isPeriodDropdownOpen && 'hidden'}`}>
                     <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                       <div className='relative'>
@@ -118,177 +119,159 @@ export default function HomePage({ searchParams }: PageProps) {
                     </ul>
                   </div> */}
                 {/* </div> */}
-                <Select value={tipo} size='large'
+                <Select value={tipo}
                   onChange={(value: string) => {
                     setTipo(value);
                   }}
                   defaultValue="Tipo de transação"
                 >
                   {/* <Select.Option value="tipo de transaco">Tipo de transaco</Select.Option> */}
-                  {/* <Select.Option value="Deposito"><Checkbox /> Deposito</Select.Option> */}
-                  <Select.Option value="Deposito">Deposito</Select.Option>
-                  {/* <Select.Option value="Pagemento Job"><Checkbox /> Pagemento Job</Select.Option> */}
-                  <Select.Option value="Pagemento Job">Pagemento Job</Select.Option>
+                  <Select.Option value="Deposito"><Checkbox /> Deposito</Select.Option>
+                  <Select.Option value="Pagemento Job"><Checkbox /> Pagemento Job</Select.Option>
                 </Select>
               </div>
             </div>
 
             <div className='relative mt-2'>
               <button onClick={() => { setDownloadbutton(!downloadbutton) }}>
-                <svg width={40} height={40}><use href='#svg-download' /></svg>
+                <svg width={30} height={30}><use href='#svg-download' /></svg>
               </button>
               {downloadbutton && (<>
-                <div className='flex flex-col w-28 bg-white rounded-sm absolute top-[40px] right-0'>
-                  <button className='p-2 text-left font-Inter text-xs/[12px]'>PDF</button>
-                  <button className='p-2 text-left font-Inter text-xs/[12px]'>Excel</button>
+                <div className='flex flex-col w-[70px] bg-gray rounded-[1rem] absolute top-[30px] right-0 border-[2px] z-2'>
+                  <button className=' p-[1rem] text-left text-[3rem]'>PDF</button>
+                  <button className=' p-[1rem] text-left text-[3rem]'>XLS</button>
                 </div>
               </>
               )}
             </div>
           </div>
           {searchExtend && (
-            <div className="block md:hidden m-4">
-              <div className="flex flex-col w-full gap-2">
-                <div className='relative flex flex-row justify-between rounded-lg bg-white border border-[#DDDEE3] py-2 items-center z-50'>
+            <div className="block md:hidden">
+              <div className="flex flex-col w-full gap-[2rem]">
+                <div className='relative flex flex-row justify-between rounded-[1rem] bg-white border border-[#DDDEE3] py-2 items-center z-1'>
                   <div className='flex justify-between items-center w-full h-full pr-3' onClick={() => setIsPeriodDropdownOpen(!isPeriodDropdownOpen)}>
-                    <p className='text-md mx-5 font-Inter text-xs/[12px] leading-[4.5rem]'>Semanal</p>
+                    <p className='text-[2rem] mx-5'>Semanal</p>
                     <svg width={24} height={24}><use href='#svg-down-arrow' /></svg>
                   </div>
-                  <div id="dropdown" className={`absolute bottom-0 z-1 translate-y-[103%] bg-white divide-y divide-gray-100 rounded-lg shadow w-full dark:bg-gray-700 ${!isPeriodDropdownOpen && 'hidden'}`}>
-                    <ul className="mx-5 py-2 text-md text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                      {/* <li onClick={() => setIsPeriodDropdownOpen(false)}>
-                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white font-Inter text-xs/[12px] leading-[4.5rem]">Todo Período</a>
-                      </li> */}
-                      <li>
-                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white font-Inter text-xs/[12px] leading-[4.5rem]">Semanal</a>
-                      </li>
-                      <li>
-                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white font-Inter text-xs/[12px] leading-[4.5rem]">Mensal</a>
-                      </li>
-                      <Calendar />
-                    </ul>
-                  </div>
-                </div>
-                <Select value={tipo} size='large'
+                </div>                
+                <Select value={tipo} 
                   onChange={(value: string) => {
                     setTipo(value);
                   }}
                   defaultValue="Tipo de transação"
-                  className='font-Inter text-xs/[12px] leading-[4.5rem]'
                 >
                   {/* <Select.Option value="tipo de transaco">Tipo de transaco</Select.Option> */}
-                  {/* <Select.Option value="Deposito"><Checkbox /> Deposito</Select.Option> */}
-                  <Select.Option value="Deposito">Deposito</Select.Option>
-                  {/* <Select.Option value="Pagemento Job"><Checkbox /> Pagemento Job</Select.Option> */}
-                  <Select.Option value="Pagemento Job">Pagemento Job</Select.Option>
+                  <Select.Option value="Deposito"><Checkbox /> Deposito</Select.Option>
+                  <Select.Option value="Pagemento Job"><Checkbox /> Pagemento Job</Select.Option>
                 </Select>
-
               </div>
             </div>
           )}
-
-          <div className='flex flex-row overflow-x-auto w-[calc(100vw-8px)] md:w-[calc(100vw-96px)] gap-12 pl-6'>
-            <FinancialCard
-              svg={"#svg-transacoes"}
-              text={"Qtd. Transações"}
-              value="250"
-            />
-            <FinancialCard
-              svg={"#svg-saldo"}
-              text={"Saldo Inicial"}
-              value="R$ 1.500,00"
-            />
-            <FinancialCard
-              svg={"#svg-entradas"}
-              text={"Entradas (R$)"}
-              value="R$ 1.500,00"
-            />
-            <FinancialCard
-              svg={"#svg-saidas"}
-              text={"Saídas (R$)"}
-              value="R$ 3.500,00"
-            />
-            <FinancialCard
-              svg={"#svg-total"}
-              text={"Total"}
-              value="R$ 1.500,00"
-            />
-            <FinancialCard
-              svg={"#svg-saldo-final"}
-              text={"Saldo Final"}
-              value="R$ 2.000,00"
-            />
+         
+          <div className='flex sm:w-full w-[100%] overflow-x-auto flow scroll-smooth sm:px-[3rem] px-[3rem]'>
+            <div className='flex gap-[2rem] md:w-full w-[200rem] justify-between'>
+              <FinancialCard
+                svg={"#svg-transacoes"}
+                text={"Qtd. Transações"}
+                value="250"
+              />
+              <FinancialCard
+                svg={"#svg-saldo"}
+                text={"Saldo Inicial"}
+                value="R$ 1.500,00"
+              />
+              <FinancialCard
+                svg={"#svg-entradas"}
+                text={"Entradas (R$)"}
+                value="R$ 1.500,00"
+              />
+              <FinancialCard
+                svg={"#svg-saidas"}
+                text={"Saídas (R$)"}
+                value="R$ 3.500,00"
+              />
+              <FinancialCard
+                svg={"#svg-total"}
+                text={"Total"}
+                value="R$ 1.500,00"
+              />
+              <FinancialCard
+                svg={"#svg-saldo-final"}
+                text={"Saldo Final"}
+                value="R$ 2.000,00"
+              />
+            </div>
           </div>
-          <div className='flex flex-col justify-between'>
-            <div className='flex-l px-1 md:px-5'>
+          <div className='flex flex-col'>
+            <div className='flex-l px-[1rem] md:px-[3rem]'>
               <div className='hidden md:block'>
-                <div className='grid grid-cols-12 gap-2'>
-                  <p className='col-span-2 text-sm font-bold p-4'>Data</p>
-                  <p className='col-span-4 text-sm font-bold p-4'>Descrição</p>
-                  <p className='col-span-2 text-sm font-bold p-4'>Prestador</p>
-                  <p className='col-span-1 text-sm font-bold p-4'>Tipo</p>
-                  <p className='col-span-2 text-sm font-bold p-4 text-center'>Valor</p>
+                <div className='grid grid-cols-12 gap-[2rem]'>
+                  <p className='col-span-2 text-[3rem] font-bold p-[2rem]'>Data</p>
+                  <p className='col-span-4 text-[3rem] font-bold p-[2rem]'>Descrição</p>
+                  <p className='col-span-2 text-[3rem] font-bold p-[2rem]'>Prestador</p>
+                  <p className='col-span-1 text-[3rem] font-bold p-[2rem]'>Tipo</p>
+                  <p className='col-span-2 text-[3rem] font-bold p-[2rem] text-center'>Valor</p>
                 </div>
               </div>
               <div>
                 <Detail clicked={clicked} setClicked={setClicked} transaction={transaction} />
               </div>
               {transactions.map((_transaction: Transaction, index) => (
-                <div>
+                <div id='card'>
                   <div className='hidden md:block'>
-                    <div key={index} className="w-full grid grid-cols-12 bg-white my-1 py-1" onClick={() => showDrawer(_transaction)}>
-                      <p className='col-span-2 text-sm p-2 flex flex-row items-center gap-2 font-Inter'>
+                    <div key={index} className="w-full grid grid-cols-12 bg-white my-[1rem] py-[1rem] items-center" onClick={() => showDrawer(_transaction)}>
+                      <p className='col-span-2 text-[3rem] p-[1rem] flex flex-row items-center gap-[2rem]'>
                         <svg width={16} height={16}><use href='#svg-calendar' /></svg>
                         <FormatDate dateString={`${_transaction.Data}`} time={`${_transaction.time}`} />
                       </p>
-                      <p className='col-span-4 text-sm p-2 flex items-center font-Inter'>{_transaction.Descricao}</p>
-                      <p className='col-span-2 text-sm p-2 flex items-center font-Inter'>
+                      <p className='col-span-4 text-[2rem] p-[1rem] flex items-center'>{_transaction.Descricao}</p>
+                      <p className='col-span-2 text-[2rem] p-[1rem] flex items-center'>
                         {_transaction.Tipo === 'Retirada' ? (
-                          <div className='flex flex-row gap-2 items-center'>
+                          <div className='flex flex-row gap-[2rem] items-center'>
                             <Image src="/avatar2.png" alt="avatar2" width={24} height={24} />
-                            <p className='text-sm'>{_transaction.Prestador}</p>
+                            <p className='text-[2rem]'>{_transaction.Prestador}</p>
                           </div>) : (<div></div>)}
                       </p>
-                      <p className={`col-span-1 text-sm font-Inter my-1 p-1 rounded-full px-4 justify-center flex items-center ${_transaction.Tipo === 'Retirada' ? 'bg-red-300 text-red-600' : 'bg-green-300 text-green-600'}`}>{_transaction.Tipo}</p>
-                      <p className={`col-span-2 text-sm p-2 font-bold ml-auto mr-6 flex items-center  ${_transaction.Valor > 0 ? 'text-green-600' : 'text-red-600 font-Inter'}`}>
+                      <p className={`col-span-1 text-[2rem] h-[5rem] rounded-full px-4 justify-center flex items-center ${_transaction.Tipo === 'Retirada' ? 'bg-red-300 text-red-600' : 'bg-green-300 text-green-600'}`}>{_transaction.Tipo}</p>
+                      <p className={`col-span-2 text-[2rem] font-bold ml-auto mr-6 flex items-center  ${_transaction.Valor > 0 ? 'text-green-600' : 'text-red-600'}`}>
                         <FormatValue value={_transaction.Valor} />
                       </p>
-                      <p className='col-span-1 text-sm p-2 ml-auto mr-2 flex items-center'>
+                      <p className='col-span-1 text-[2rem] px-[2rem] ml-auto flex items-center'>
                         <button onClick={() => showDrawer(_transaction)}>
                           <svg width={24} height={24}><use href='#svg-detail' /></svg>
                         </button>
                       </p>
                     </div>
                   </div>
-                  <div className='block md:hidden' onClick={() => showDrawer(_transaction)}>
-                    <div key={index} className="w-full mx-auto bg-white my-2 rounded-lg">
-                      <p className='text-sm px-4 py-2 flex items-center'>{_transaction.Descricao}</p>
-                      <div className='flex flex-row mx-6 my-4 justify-between '>
-                        <p className='text-sm flex flex-row items-center gap-2 font-Inter'>
+                  <div className='block md:hidden' onClick={() => showDrawer(_transaction)} id="bottomBar">
+                    <div key={index} className="md:w-full w-full mx-auto bg-white my-2 rounded-lg">
+                      <p className='md:text-[3rem] sm:text-[2.5rem] text-[1.8rem] px-4 py-2 flex items-center'>{_transaction.Descricao}</p>
+                      <div className='flex flex-row mx-6 my-4 justify-between'>
+                        <p className='md:text-[3rem] sm:text-[2rem] text-[1.5rem] px-[2rem] flex flex-row items-center gap-[2rem]'>
                           <svg width={16} height={16}><use href='#svg-calendar' /></svg>
                           <DetailedDate dateString={`${_transaction.Data}`} time={`${_transaction.time}`} />
                         </p>
-                        <p className='text-sm pr-4 pb-2 flex items-center font-Inter'>
+                        <p className='md:text-[2rem] sm:text-[1.5rem] text-[1.5rem] pr-4 pb-2 flex items-center '>
                           {_transaction.Tipo === 'Retirada' ? (
-                            <div className='flex flex-row gap-2 items-center'>
+                            <div className='flex flex-row gap-[2rem] items-center'>
                               <Image src="/avatar2.png" alt="avatar2" width={24} height={24} />
-                              <p className='text-sm'>{_transaction.Prestador}</p>
+                              <p>{_transaction.Prestador}</p>
                             </div>) : (<div></div>)}
                         </p>
                       </div>
-                      <div className='flex flex-row justify-between mx-4 py-4 border-t-2 border-gray-300'>
-                        <p className={`text-xs font-Inter my-1 p-1 rounded-full px-4 justify-center flex items-center ${_transaction.Tipo === 'Retirada' ? 'bg-red-300 text-red-600' : 'bg-green-300 text-green-600'}`}>{_transaction.Tipo}</p>
-                        <p className={`text-sm font-Inter p-2 font-bold  flex items-center  ${_transaction.Valor > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                      <div className='flex sm:py-[1rem] sm:px-[1rem] px-[1.5rem] py-[1rem] flex-row justify-between border-t-2 border-gray-300'>
+                        <p className={`md:text-[3rem] sm:text-[2rem] text-[1.5rem] rounded-full px-4 justify-center flex items-center ${_transaction.Tipo === 'Retirada' ? 'bg-red-300 text-red-600' : 'bg-green-300 text-green-600'}`}>{_transaction.Tipo}</p>
+                        <p className={`md:text-[3rem] sm:text-[2rem] text-[1.5rem] sm:px-[1rem] font-bold  flex items-center  ${_transaction.Valor > 0 ? 'text-green-600' : 'text-red-600'}`}>
                           <FormatValue value={_transaction.Valor} />
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </div>                 
                 </div>
               ))}
             </div>
           </div>
-          <div className='fixed md:ml-auto md:mr-10 mt-4 mb-1 bottom-5 right-0 text-sm font-Inter'>
+          <div className='md:fixed absolute md:bottom-[2rem] md:right-[3rem] bottom-[-5rem] right-[0rem]'>
             <PaginationBar href="/" page={page} pageCount={pageCount} />
           </div>
         </div>

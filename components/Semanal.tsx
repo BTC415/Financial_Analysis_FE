@@ -27,7 +27,7 @@ const Semanal = () => {
       <button onClick={showPreviousWeek}>
         <svg width={24} height={24}><use href="#svg-left-arrow" /></svg>
       </button>
-      <div className='text-sm px-4'>
+      <div className='md:text-[2.5rem] sm:text-[1.3rem] px-[0.5rem]'>
         {`${format(startDate, 'MM/dd/yyyy')} à ${format(endDate, 'MM/dd/yyyy')}`}
       </div>
       <button onClick={showNextWeek}>

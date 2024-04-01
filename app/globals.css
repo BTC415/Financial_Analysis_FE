@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+    font-size: 1.3vw;
+}
+
+
+
+@media (min-width: 640px) {
+    html {
+        font-size: 1vw;
+    }
+   
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 0.45vw;
+    }
+    
+}
+
+@media (min-width: 1024px) {
+    html {
+        font-size: 0.3vw;
+    }
+  
+    
+}
+
+body{
+    background-color: #F3F3F5;
+}

@@ -17,7 +17,7 @@ const Mensal = () => {
       <button onClick={showPreviousMonth}>
         <svg width={24} height={24}><use href="#svg-left-arrow" /></svg>
       </button>
-      <div className='text-sm px-4'>
+      <div className='sm:text-[1.5rem] text-[2.5rem] px-[0.5rem]'>
         {format(currentDate, 'MM/yyyy', { locale: pt })}
       </div>
       <button onClick={showNextMonth}>

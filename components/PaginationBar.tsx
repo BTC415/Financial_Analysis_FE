@@ -13,22 +13,22 @@ export default function PaginationBar({ href, page, pageCount }: PaginationBarPr
     <div className="flex gap-2 items-center">
       <PaginationLink href={`${href}?page=1}`} page={page}
         enabled={page > 1}>
-        <ChevronDoubleLeftIcon className="h-10 w-10" />
+        <ChevronDoubleLeftIcon className="md:h-[7rem] md:w-[7rem] sm:h-[4rem] sm:w-[4rem] h-[2.5rem] w-[2.5rem]" />
       </PaginationLink>
       <PaginationLink href={`${href}?page=${page - 1}`} page={page}
         enabled={page > 1}>
-        <ChevronLeftIcon className="h-10 w-10" />
+        <ChevronLeftIcon className="md:h-[7rem] md:w-[7rem] sm:h-[4rem] sm:w-[4rem] h-[2.5rem] w-[2.5rem]" />
       </PaginationLink>
 
       <InsidePagingationLink pageCount={pageCount} page={page} href={href} />
 
       <PaginationLink href={`${href}?page=${page + 1}`} page={page}
         enabled={page < pageCount}>
-        <ChevronRightIcon className="h-10 w-10" />
+        <ChevronRightIcon className="md:h-[7rem] md:w-[7rem] sm:h-[4rem] sm:w-[4rem] h-[2.5rem] w-[2.5rem]" />
       </PaginationLink>
       <PaginationLink href={`${href}?page=${pageCount}`} page={page}
         enabled={page < pageCount} >
-        <ChevronDoubleRightIcon className="h-10 w-10" />
+        <ChevronDoubleRightIcon className="md:h-[7rem] md:w-[7rem] sm:h-[4rem] sm:w-[4rem] h-[2.5rem] w-[2.5rem]" />
       </PaginationLink>
     </div>
   );
@@ -45,16 +45,16 @@ function PaginationLink({ children, enabled, href, page }: PaginationLinkProps) 
   if (!enabled) {
     return (
       <span
-        className="border cursor-not-allowed rounded text-slate-300 text-sm">
+        className="border cursor-not-allowed rounded text-slate-300 text-[2rem]">
         {children}
       </span>
     );
   }
   return (
     <Link href={href}
-      className={page !== children ? `border rounded text-slate-500 text-lg flex justify-center items-center
-                 hover:bg-orange-100 hover:text-slate-700 w-10 h-10 `: `border rounded text-red-500 text-lg flex justify-center items-center
-                bg-blue-500 hover:text-slate-700 w-10 h-10 `}>
+      className={page !== children ? `border rounded text-slate-500 md:text-[4rem] text-[2rem] flex justify-center items-center
+                 hover:bg-orange-100 hover:text-slate-700 md:h-[7rem] md:w-[7rem] sm:h-[4rem] sm:w-[4rem] h-[2.5rem] w-[2.5rem]`: `border rounded text-red-500 md:text-[4rem] text-[2rem] flex justify-center items-center
+                bg-blue-500 hover:text-slate-700 md:h-[7rem] md:w-[7rem] sm:h-[4rem] sm:w-[4rem] h-[2.5rem] w-[2.5rem]`}>
       {children}
     </Link>
   );
