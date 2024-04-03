@@ -34,7 +34,7 @@ export default function HomePage({ searchParams }: PageProps) {
   const [tipo, setTipo] = React.useState<string | undefined>(undefined);
   const [isPeriodDropdownOpen, setIsPeriodDropdownOpen] = React.useState<boolean>(false);
   const [searchExtend, setSearchExtend] = React.useState<boolean>(false);
-
+  const [selectedOptions, setSelectedOptions] = React.useState<string | undefined>(undefined);
   const page = searchParams.page ? parseInt(searchParams.page) : 1
 
 
@@ -47,22 +47,9 @@ export default function HomePage({ searchParams }: PageProps) {
     setPeriodOption(e.target.value);
   }
 
-  const handleSelectChange = (value) => {
-    setTipo(value);
-  };
-
-  const [selectedOptions, setSelectedOptions] = useState([]);
-
-  const handleSelectChange2 = (value) => {
-    setSelectedOptions(value);
-  };
-
-  const renderOption = (option) => (
-    <div>
-      <Checkbox checked={selectedOptions.includes(option.value)} />
-      {option.label}
-    </div>
-  );
+  const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOptions(e.target.value);
+  };  
 
   React.useEffect(() => {
     (async () => {
@@ -133,11 +120,10 @@ export default function HomePage({ searchParams }: PageProps) {
                 <Select
                   mode="multiple"
                   value={selectedOptions}
-                  onChange={handleSelectChange2}
+                  onChange={handleSelectChange}
                   placeholder="Tipo de transação"
                   style={{ width: '50%', height: "30px"}}
                   // optionLabelProp="label"
-                  renderOption={renderOption}
                   className='lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem]'
                 >
                   <Select.Option value="Deposito" label="Deposito">Deposito</Select.Option>
@@ -171,11 +157,10 @@ export default function HomePage({ searchParams }: PageProps) {
                 <Select
                   mode="multiple"
                   value={selectedOptions}
-                  onChange={handleSelectChange2}
+                  onChange={handleSelectChange}
                   placeholder="Deposito"
                   style={{ width: '50%', height: "30px"}}
                   // optionLabelProp="label"
-                  renderOption={renderOption}
                   className='lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem]'
                 >
                   <Select.Option value="Deposito" label="Deposito">Deposito</Select.Option>
