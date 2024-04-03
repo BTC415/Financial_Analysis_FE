@@ -15,8 +15,9 @@ import Detail from '@/components/Detail';
 import { Transaction } from '@/lib/transactions';
 import Calendar from '@/components/CalendarPopup';
 import Semanal from '@/components/Semanal';
-import Mensal from '@/components/Mensal'
-import Custom from '@/components/Custom'
+import Mensal from '@/components/Mensal';
+import Custom from '@/components/Custom';
+
 
 interface PageProps {
   searchParams: { page?: string };
@@ -120,7 +121,9 @@ export default function HomePage({ searchParams }: PageProps) {
                 <Select
                   mode="multiple"
                   value={selectedOptions}
-                  onChange={handleSelectChange}
+                  onChange={(value: string) => {
+                    setSelectedOptions(value);
+                  }}
                   placeholder="Tipo de transação"
                   style={{ width: '50%', height: "30px"}}
                   // optionLabelProp="label"
@@ -157,7 +160,9 @@ export default function HomePage({ searchParams }: PageProps) {
                 <Select
                   mode="multiple"
                   value={selectedOptions}
-                  onChange={handleSelectChange}
+                  onChange={(value: string) => {
+                    setSelectedOptions(value);
+                  }}
                   placeholder="Deposito"
                   style={{ width: '50%', height: "30px"}}
                   // optionLabelProp="label"
