@@ -11,19 +11,19 @@ const Navbar = () => {
             </svg>
           </div>
           <div className="flex flex-row gap-[1.5rem] justify-between items-center">
-            <div className="bg-[#F3F3F5] flex justify-evenly flex-row items-center gap-[2rem] w-[50rem] h-[9rem] rounded-[1rem] my-[1.5rem] px-[1rem]">
+            <div className="bg-[#F3F3F5] flex justify-evenly flex-row items-center gap-[2rem] w-[60rem] h-[9rem] rounded-[1rem] my-[1.5rem] px-[1rem]">
               <svg width={24} height={24}>
                 <use href="#svg-wallet" />
               </svg>
               <div>
-                <p className="text-[2rem] text-slate-300">Meu Saldo</p>
-                <p className="font-bold md:text-[3rem] sm:text-[2.5rem]">R$ 2.450,00</p>
+                <p className="lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem] text-slate-300">Meu Saldo</p>
+                <p className="font-bold lg:text-[3.5rem] md:text-[3.1rem] sm:text-[3.1rem] text-[2.2rem]">R$ 2.450,00</p>
               </div>
               <div className="flex items-center justify-around p-[1rem] bg-[#3A5998] rounded-[1.5rem] w-[40%] h-[6rem]">
                 <svg width={20} height={20}>
                   <use href="#svg-plus" />
                 </svg>
-                <p className="text-white text-[2rem]">Depositar</p>
+                <p className="text-white lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem]">Depositar</p>
               </div>
             </div>
             <div>
@@ -31,14 +31,14 @@ const Navbar = () => {
                 <use href="#svg-vertical-bar" />
               </svg>
             </div>
-            <div className="flex flex-row gap-[1rem] p-[1rem] items-center">
+            <div className="flex flex-row gap-[1.5rem] px-[3rem] items-center">
               <Image src="/avatar.png" alt="avatar"  width={40}
                 height={40} sizes="0.2rem"
                 style={{
-                  width: '50%',
+                  width: '40%',
                   height: 'auto',
                 }} className="rounded-full" />
-              <p className="md:text-[3rem] sm:text-[2.5rem] font-bold">Ricardo Perez</p>
+              <p className="lg:text-[3.5rem] md:text-[3.1rem] sm:text-[3.1rem] text-[2.2rem] font-bold md:w-[30rem] w-[20rem]">Ricardo Perez</p>
               <svg width={30} height={30}>
                 <use href="#svg-down-arrow" />
               </svg>
@@ -53,14 +53,14 @@ const Navbar = () => {
             <use href="#svg-logo" />
           </svg>
         </div>
-        <div className="flex flex-row justify-evenly items-center gap-[1rem] w-[80rem]">
-          <div className="flex flex-row justify-evenly items-center w-[40rem] gap-[1.5rem] bg-[#264C80] my-[1.5rem] p-[1rem] rounded-[1.5rem]">
+        <div className="flex flex-row justify-evenly items-center gap-[1.5rem] w-[80rem]">
+          <div className="flex flex-row justify-evenly items-center w-[30rem] gap-[1.5rem] bg-[#264C80] my-[1.5rem] p-[1rem] rounded-[1.5rem]">
             <svg width={24} height={24}>
               <use href="#svg-wallet" />
             </svg>
             <div>
-              <p className="sm:text-[1rem] text-[1.5rem] text-slate-300">Meu Saldo</p>
-              <p className="font-bold sm:text-[2.5rem] text-[2.5rem]">R$ 2.450,00</p>
+              <p className="lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem] text-slate-300">Meu Saldo</p>
+              <p className="font-bold lg:text-[3.5rem] md:text-[3.1rem] sm:text-[3.1rem] text-[2.2rem]">R$ 2.450,00</p>
             </div>
           </div>
           <div>

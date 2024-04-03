@@ -3,14 +3,12 @@
 @tailwind utilities;
 
 html {
-    font-size: 1.3vw;
+    font-size: 1vw;
 }
-
-
 
 @media (min-width: 640px) {
     html {
-        font-size: 1vw;
+        font-size: 0.6vw;
     }
    
 }
@@ -32,4 +30,8 @@ html {
 
 body{
     background-color: #F3F3F5;
+}
+
+* {
+    font-family: "Inter"!important;
 }

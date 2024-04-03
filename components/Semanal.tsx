@@ -23,11 +23,11 @@ const Semanal = () => {
   };
 
   return (
-    <div className='flex flex-row bg-white p-2 rounded-md items-center'>
+    <div className='flex flex-row bg-white rounded-[2rem] items-center border-2'>
       <button onClick={showPreviousWeek}>
         <svg width={24} height={24}><use href="#svg-left-arrow" /></svg>
       </button>
-      <div className='md:text-[2.5rem] sm:text-[1.3rem] px-[0.5rem]'>
+      <div className='lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem]'>
         {`${format(startDate, 'MM/dd/yyyy')} à ${format(endDate, 'MM/dd/yyyy')}`}
       </div>
       <button onClick={showNextWeek}>
