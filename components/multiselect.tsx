@@ -44,7 +44,7 @@ const MultiSelect = ({options, onChange}: IProps) =>{
                 {   //@ts-ignore
                     items.map((item:IItem) => 
                         <label key={item.title} className='cursor-pointer h-[30px] flex items-center gap-1'>                            
-                            <input type="checkbox" checked={item.checked} onChange={(e: React.ChangeEvent<HTMLElement>) => handleCheck(item.title, e.target.checked)} className='items-center'/>{item.title}
+                            <input type="checkbox" checked={item.checked} onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleCheck(item.title, e.target.checked)} className='items-center'/>{item.title}
                         </label>
                     )
                 }
