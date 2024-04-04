@@ -23,7 +23,7 @@ const Semanal = () => {
   };
 
   return (
-    <div className='flex flex-row bg-white rounded-[2rem] items-center border-2'>
+    <div className='flex flex-row bg-white rounded-[1rem] h-[30px] items-center border-2'>
       <button onClick={showPreviousWeek}>
         <svg width={24} height={24}><use href="#svg-left-arrow" /></svg>
       </button>

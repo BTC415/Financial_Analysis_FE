@@ -17,7 +17,7 @@ import Calendar from '@/components/CalendarPopup';
 import Semanal from '@/components/Semanal';
 import Mensal from '@/components/Mensal';
 import Custom from '@/components/Custom';
-
+import MultiSelect from '@/components/multiselect';
 
 interface PageProps {
   searchParams: { page?: string };
@@ -29,6 +29,7 @@ export default function HomePage({ searchParams }: PageProps) {
   const [clicked, setClicked] = useState(false)
   const [transactions, setTransactions] = React.useState<Transaction[]>([]);
   const [downloadbutton, setDownloadbutton] = React.useState<boolean>(false)
+  const [selectbutton, setSelectbutton] = React.useState<boolean>(false)
   const [pageCount, setPageCount] = React.useState<number>(0);
   const [transaction, setTransaction] = React.useState<Transaction | undefined>(undefined);
   const [periodOption, setPeriodOption] = React.useState<string | undefined>("Semanal");
@@ -89,7 +90,7 @@ export default function HomePage({ searchParams }: PageProps) {
 
             <div className="hidden md:block">
               {" "}
-              <div className="flex flex-row align-center lg:w-[53vw] w-[60vw] justify-end gap-[1rem]">
+              <div className="flex flex-row items-center lg:w-[53vw] w-[60vw] justify-end gap-[1rem]">
                 {
                   periodOption === "Semanal" ? <Semanal /> : (periodOption === "Mensal" ? <Mensal /> : <Custom />)
                 }               
@@ -103,35 +104,15 @@ export default function HomePage({ searchParams }: PageProps) {
                   <Select.Option value="Semanal">Semanal</Select.Option>
                   <Select.Option value="Mensal">Mensal</Select.Option>
                   <Select.Option value="Personalizado">Personalizado</Select.Option>
-                </Select> 
+                </Select>    
 
-                {/* <Select value={tipo}
-                  onChange={handleSelectChange}
-                  defaultValue="Tipo de transação"
-                >                  
-                  <Select.Option value="Deposito">
-                    {tipo !== "Deposito" ? <Checkbox /> : null}
-                    Deposito
-                  </Select.Option>
-                  <Select.Option value="Pagemento Job">
-                    {tipo !== "Pagemento Job" ? <Checkbox /> : null}
-                    Pagemento Job
-                  </Select.Option>
-                </Select> */}
-                <Select
-                  mode="multiple"
-                  value={selectedOptions}
-                  onChange={(value: string) => {
-                    setSelectedOptions(value);
-                  }}
-                  placeholder="Tipo de transação"
-                  style={{ width: '50%', height: "30px"}}
-                  // optionLabelProp="label"
-                  className='text-[12px]'
-                >
-                  <Select.Option value="Deposito" label="Deposito">Deposito</Select.Option>
-                  <Select.Option value="Pagamento Job" label="Pagamento Job">Pagamento Job</Select.Option>
-                </Select>
+                <MultiSelect 
+                  options={[
+                      "Doposito",
+                      "Pagamento Job"
+                  ]}
+                  onChange={ (value) => {console.log(value)} }
+                /> 
               </div>
             </div>
 
@@ -151,13 +132,24 @@ export default function HomePage({ searchParams }: PageProps) {
           {searchExtend && (
             <div className="block md:hidden py-[1rem]">
               <div className="flex flex-col w-full gap-[2rem]">
-                <div className='relative flex flex-row justify-between rounded-[1rem] bg-white border border-[#DDDEE3] py-2 items-center z-1'>
-                  <div className='flex justify-between items-center w-full h-full pr-3' onClick={() => setIsPeriodDropdownOpen(!isPeriodDropdownOpen)}>
-                    <p className='text-[12px] mx-5'>Semanal</p>
-                    <svg width={24} height={24}><use href='#svg-down-arrow' /></svg>
-                  </div>
-                </div>  
-                <Select
+              <Select value={periodOption} 
+                  onChange={(value: string) => {
+                    setPeriodOption(value);
+                  }}
+                  className='text-[12px] h-[30px]'
+                >
+                  <Select.Option value="Semanal">Semanal</Select.Option>
+                  <Select.Option value="Mensal">Mensal</Select.Option>
+                  <Select.Option value="Personalizado">Personalizado</Select.Option>
+                </Select>    
+                <MultiSelect 
+                  options={[
+                      "Doposito",
+                      "Pagamento Job"
+                  ]}
+                  onChange={ (value) => {console.log(value)} }
+                />  
+                {/* <Select
                   mode="multiple"
                   value={selectedOptions}
                   onChange={(value: string) => {
@@ -170,7 +162,7 @@ export default function HomePage({ searchParams }: PageProps) {
                 >
                   <Select.Option value="Deposito" label="Deposito">Deposito</Select.Option>
                   <Select.Option value="Pagamento Job" label="Pagamento Job">Pagamento Job</Select.Option>
-                </Select>
+                </Select> */}
               </div>
             </div>
           )}
