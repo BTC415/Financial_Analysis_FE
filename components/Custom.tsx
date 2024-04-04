@@ -8,7 +8,7 @@ const Custom: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(dayjs('2015/01/01', dateFormat));
 
   return (
-    <div className="flex flex-row p-1 rounded-md items-center lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem]">
+    <div className="flex flex-row p-1 rounded-md items-center text-[12px]">
       <DatePicker.RangePicker
         defaultValue={[dayjs('2024/03/25', dateFormat), dayjs('2024/03/28', dateFormat)]}
         format={dateFormat}

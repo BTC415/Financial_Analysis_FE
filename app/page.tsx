@@ -76,20 +76,20 @@ export default function HomePage({ searchParams }: PageProps) {
   return (
     <>
       <div className={`flex flex-row ${clicked ? 'bg-opacity-50 bg-gray-600' : ''}`}>
-        <div className='w-[88px] hidden lg:block'>
+        <div className='hidden lg:block'>
           <Sidebar />
         </div>
         <div className='flex-grow bg-[#F3F3F5] md:none relative w-full'>
           <Navbar />
-          <div className='flex items-center py-[3rem] mx-[2rem] gap-[2rem] px-[1rem] md:px-[3rem]'>
-            <p className='font-bold md:[5-rem] sm-[4.5rem] lg:text-[5rem] md:text-[4.5rem] sm:text-[4.6rem] text-[3.2rem] flex flex-grow'>Extracto</p>
+          <div className='flex items-center py-[3rem] gap-[2rem] lg:px-[7.89rem] md:px-[5.26rem] sm:px-[3.94rem] px-[2.37rem]'>
+            <p className='font-bold md:[5-rem] sm-[4.5rem] text-[20px] flex flex-grow'>Extracto</p>
             <button onClick={() => setSearchExtend(!searchExtend)}>
               <svg width={30} height={30} className='block md:hidden'><use href='#svg-collapse' /></svg>
             </button>
 
             <div className="hidden md:block">
               {" "}
-              <div className="flex flex-row align-center lg:w-[50vw] w-[60vw] justify-end gap-[1rem]">
+              <div className="flex flex-row align-center lg:w-[53vw] w-[60vw] justify-end gap-[1rem]">
                 {
                   periodOption === "Semanal" ? <Semanal /> : (periodOption === "Mensal" ? <Mensal /> : <Custom />)
                 }               
@@ -98,7 +98,7 @@ export default function HomePage({ searchParams }: PageProps) {
                   onChange={(value: string) => {
                     setPeriodOption(value);
                   }}
-                  className='lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem] h-[30px]'
+                  className='text-[12px] h-[30px]'
                 >
                   <Select.Option value="Semanal">Semanal</Select.Option>
                   <Select.Option value="Mensal">Mensal</Select.Option>
@@ -127,7 +127,7 @@ export default function HomePage({ searchParams }: PageProps) {
                   placeholder="Tipo de transação"
                   style={{ width: '50%', height: "30px"}}
                   // optionLabelProp="label"
-                  className='lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem]'
+                  className='text-[12px]'
                 >
                   <Select.Option value="Deposito" label="Deposito">Deposito</Select.Option>
                   <Select.Option value="Pagamento Job" label="Pagamento Job">Pagamento Job</Select.Option>
@@ -141,8 +141,8 @@ export default function HomePage({ searchParams }: PageProps) {
               </button>
               {downloadbutton && (<>
                 <div className='flex flex-col w-[70px] bg-gray rounded-[1rem] absolute top-[30px] right-0 border-[2px] z-2'>
-                  <button className=' p-[1rem] text-left lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem]'>PDF</button>
-                  <button className=' p-[1rem] text-left lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem]'>XLS</button>
+                  <button className=' p-[1rem] text-left text-[12px]'>PDF</button>
+                  <button className=' p-[1rem] text-left text-[12px]'>XLS</button>
                 </div>
               </>
               )}
@@ -153,7 +153,7 @@ export default function HomePage({ searchParams }: PageProps) {
               <div className="flex flex-col w-full gap-[2rem]">
                 <div className='relative flex flex-row justify-between rounded-[1rem] bg-white border border-[#DDDEE3] py-2 items-center z-1'>
                   <div className='flex justify-between items-center w-full h-full pr-3' onClick={() => setIsPeriodDropdownOpen(!isPeriodDropdownOpen)}>
-                    <p className='sm:text-[2.7rem] text-[2rem] mx-5'>Semanal</p>
+                    <p className='text-[12px] mx-5'>Semanal</p>
                     <svg width={24} height={24}><use href='#svg-down-arrow' /></svg>
                   </div>
                 </div>  
@@ -166,7 +166,7 @@ export default function HomePage({ searchParams }: PageProps) {
                   placeholder="Deposito"
                   style={{ width: '50%', height: "30px"}}
                   // optionLabelProp="label"
-                  className='lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem]'
+                  className='text-[12px]'
                 >
                   <Select.Option value="Deposito" label="Deposito">Deposito</Select.Option>
                   <Select.Option value="Pagamento Job" label="Pagamento Job">Pagamento Job</Select.Option>
@@ -175,7 +175,7 @@ export default function HomePage({ searchParams }: PageProps) {
             </div>
           )}
          
-          <div className='flex sm:w-full w-[100%] overflow-x-auto flow scroll-smooth sm:px-[3rem] px-[3rem]'>
+          <div className='flex md:w-full w-[100%] overflow-x-auto flow scroll-smooth lg:px-[7.89rem] md:px-[5.26rem] sm:px-[3.94rem] px-[2.37rem]'>
             <div className='flex gap-[2rem] md:w-full w-[200rem] justify-between'>
               <FinancialCard
                 svg={"#svg-transacoes"}
@@ -209,15 +209,15 @@ export default function HomePage({ searchParams }: PageProps) {
               />
             </div>
           </div>
-          <div className='flex flex-col'>
-            <div className='flex-l px-[1rem] md:px-[3rem]'>
-              <div className='hidden md:block'>
+          <div className='flex flex-col lg:px-[7.89rem] md:px-[5.26rem] sm:px-[3.94rem] px-[2.37rem]'>
+            <div className='flex-l px-[1rem]'>
+              <div className='hidden md:block mt-[2px]'>
                 <div className='grid grid-cols-12 gap-[2rem]'>
-                  <p className='col-span-2 lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem] font-bold p-[2rem]'>Data</p>
-                  <p className='col-span-4 lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem] font-bold p-[2rem]'>Descrição</p>
-                  <p className='col-span-2 lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem] font-bold p-[2rem]'>Prestador</p>
-                  <p className='col-span-1 lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem] font-bold p-[2rem]'>Tipo</p>
-                  <p className='col-span-2 lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem] font-bold p-[2rem] text-center'>Valor</p>
+                  <p className='col-span-2 text-[12px] font-bold py-[2rem]'>Data</p>
+                  <p className='col-span-4 text-[12px] font-bold py-[2rem]'>Descrição</p>
+                  <p className='col-span-2 text-[12px] font-bold py-[2rem]'>Prestador</p>
+                  <p className='col-span-1 text-[12px] font-bold py-[2rem]'>Tipo</p>
+                  <p className='col-span-2 text-[12px] font-bold py-[2rem] text-center'>Valor</p>
                 </div>
               </div>
               <div>
@@ -225,22 +225,22 @@ export default function HomePage({ searchParams }: PageProps) {
               </div>
               {transactions.map((_transaction: Transaction, index) => (
                 <div id='card'>
-                  <div className='hidden md:block'>
-                    <div key={index} className="w-full grid grid-cols-12 bg-white my-[1rem] py-[0.5rem] items-center" onClick={() => showDrawer(_transaction)}>
-                      <p className='col-span-2 lg:text-[3.5rem] md:text-[3.1rem] sm:text-[3.1rem] text-[2.2rem] p-[1rem] flex flex-row items-center gap-[2rem]'>
+                  <div className='hidden md:block mb-[2rem]'>
+                    <div key={index} className="w-full grid grid-cols-12 bg-white h-[4.68vh] items-center" onClick={() => showDrawer(_transaction)}>
+                      <p className='col-span-2 text-[14px] p-[1rem] flex flex-row items-center gap-[2rem]'>
                         <svg width={16} height={16}><use href='#svg-calendar' /></svg>
                         <FormatDate dateString={`${_transaction.Data}`} time={`${_transaction.time}`} />
                       </p>
-                      <p className='col-span-4 lg:text-[3.5rem] md:text-[3.1rem] sm:text-[3.1rem] text-[2.2rem] p-[1rem] flex items-center'>{_transaction.Descricao}</p>
+                      <p className='col-span-4 text-[14px] p-[1rem] flex items-center'>{_transaction.Descricao}</p>
                       <p className='col-span-2 text-[2rem] p-[1rem] flex items-center'>
                         {_transaction.Tipo === 'Retirada' ? (
                           <div className='flex flex-row gap-[2rem] items-center'>
                             <Image src="/avatar2.png" alt="avatar2" width={24} height={24} />
-                            <p className='lg:text-[3.5rem] md:text-[3.1rem] sm:text-[3.1rem] text-[2.2rem]'>{_transaction.Prestador}</p>
+                            <p className='text-[14px]'>{_transaction.Prestador}</p>
                           </div>) : (<div></div>)}
                       </p>
-                      <p className={`col-span-1 lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem] h-[5rem] rounded-full px-4 justify-center flex items-center ${_transaction.Tipo === 'Retirada' ? 'bg-red-300 text-red-600' : 'bg-green-300 text-green-600'}`}>{_transaction.Tipo}</p>
-                      <p className={`col-span-2 lg:text-[3rem] md:text-[2.7rem] sm:text-[2.7rem] text-[2rem] font-bold ml-[20rem] flex items-center  ${_transaction.Valor > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                      <p className={`col-span-1 text-[12px] h-[5rem] rounded-full px-4 justify-center flex items-center ${_transaction.Tipo === 'Retirada' ? 'bg-red-300 text-red-600' : 'bg-green-300 text-green-600'}`}>{_transaction.Tipo}</p>
+                      <p className={`col-span-2 text-[12px] font-bold ml-[20rem] flex items-center  ${_transaction.Valor > 0 ? 'text-green-600' : 'text-red-600'}`}>
                         <FormatValue value={_transaction.Valor} />
                       </p>
                       <p className='col-span-1 text-[2rem] px-[2rem] ml-auto flex items-center'>
@@ -250,25 +250,25 @@ export default function HomePage({ searchParams }: PageProps) {
                       </p>
                     </div>
                   </div>
-                  <div className='block md:hidden' onClick={() => showDrawer(_transaction)} id="bottomBar">
-                    <div key={index} className="md:w-full w-full mx-auto bg-white my-2 rounded-lg">
-                      <p className='lg:text-[3.5rem] md:text-[3.1rem] sm:text-[3.1rem] text-[2.2rem] px-4 py-2 flex items-center'>{_transaction.Descricao}</p>
+                  <div className='block md:hidden my-[3rem]' onClick={() => showDrawer(_transaction)} id="bottomBar">
+                    <div key={index} className="md:w-full justify-evenly p-[5rem] w-full mx-auto bg-white rounded-lg">
+                      <p className='text-[14px] px-4 py-2 flex items-center'>{_transaction.Descricao}</p>
                       <div className='flex flex-row mx-6 my-4 justify-between'>
-                        <p className='lg:text-[3.5rem] md:text-[3.1rem] sm:text-[3.1rem] text-[2.2rem] px-[2rem] flex flex-row items-center gap-[2rem]'>
+                        <p className='text-[14px] flex flex-row items-center gap-[2rem]'>
                           <svg width={16} height={16}><use href='#svg-calendar' /></svg>
                           <DetailedDate dateString={`${_transaction.Data}`} time={`${_transaction.time}`} />
                         </p>
-                        <p className='lg:text-[3.5rem] md:text-[3.1rem] sm:text-[3.1rem] text-[2.2rem] pr-4 pb-2 flex items-center '>
+                        <p className='text-[14px] pr-4 pb-2 flex items-center '>
                           {_transaction.Tipo === 'Retirada' ? (
                             <div className='flex flex-row gap-[2rem] items-center'>
                               <Image src="/avatar2.png" alt="avatar2" width={24} height={24} />
-                              <p className='lg:text-[3.5rem] md:text-[3.1rem] sm:text-[3.1rem] text-[2.2rem]'>{_transaction.Prestador}</p>
+                              <p className='text-[14px]'>{_transaction.Prestador}</p>
                             </div>) : (<div></div>)}
                         </p>
                       </div>
                       <div className='flex sm:py-[1rem] sm:px-[1rem] px-[1.5rem] py-[1rem] flex-row justify-between border-t-2 border-gray-300'>
-                        <p className={`lg:text-[3.5rem] md:text-[3.1rem] sm:text-[3.1rem] text-[2.2rem] rounded-full px-4 justify-center flex items-center ${_transaction.Tipo === 'Retirada' ? 'bg-red-300 text-red-600' : 'bg-green-300 text-green-600'}`}>{_transaction.Tipo}</p>
-                        <p className={`lg:text-[3.5rem] md:text-[3.1rem] sm:text-[3.1rem] text-[2.2rem] sm:px-[1rem] font-bold ml-[20rem] flex items-center  ${_transaction.Valor > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        <p className={`text-[14px] rounded-full px-4 justify-center flex items-center ${_transaction.Tipo === 'Retirada' ? 'bg-red-300 text-red-600' : 'bg-green-300 text-green-600'}`}>{_transaction.Tipo}</p>
+                        <p className={`text-[14px] sm:px-[1rem] font-bold ml-[20rem] flex items-center  ${_transaction.Valor > 0 ? 'text-green-600' : 'text-red-600'}`}>
                           <FormatValue value={_transaction.Valor} />
                         </p>
                       </div>
@@ -278,7 +278,7 @@ export default function HomePage({ searchParams }: PageProps) {
               ))}
             </div>
           </div>
-          <div className='md:fixed absolute md:bottom-[2rem] md:right-[3rem] bottom-[-7rem] right-[0rem]'>
+          <div className='md:fixed absolute md:bottom-[2rem] bottom-[-7rem] right-[0rem] lg:px-[7.89rem] md:px-[5.26rem] sm:px-[3.94rem] px-[2.37rem]'>
             <PaginationBar href="/" page={page} pageCount={pageCount} />
           </div>
         </div>
