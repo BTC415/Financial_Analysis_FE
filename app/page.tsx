@@ -39,7 +39,6 @@ export default function HomePage({ searchParams }: PageProps) {
   const [selectedOptions, setSelectedOptions] = React.useState<string | undefined>(undefined);
   const page = searchParams.page ? parseInt(searchParams.page) : 1
 
-
   const showDrawer = (_transaction: Transaction) => {
     setTransaction(_transaction);
     setClicked(true)
@@ -87,7 +86,6 @@ export default function HomePage({ searchParams }: PageProps) {
             <button onClick={() => setSearchExtend(!searchExtend)}>
               <svg width={30} height={30} className='block md:hidden'><use href='#svg-collapse' /></svg>
             </button>
-
             <div className="hidden md:block">
               {" "}
               <div className="flex flex-row items-center lg:w-[53vw] w-[60vw] justify-end gap-[1rem]">
@@ -105,7 +103,6 @@ export default function HomePage({ searchParams }: PageProps) {
                   <Select.Option value="Mensal">Mensal</Select.Option>
                   <Select.Option value="Personalizado">Personalizado</Select.Option>
                 </Select>    
-
                 <MultiSelect 
                   options={[
                       "Doposito",
