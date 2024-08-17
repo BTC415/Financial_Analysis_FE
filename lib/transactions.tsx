@@ -7,7 +7,7 @@ export interface Transaction {
   image: string;
   Tipo: 'Depósito' | 'Retirada';
   Valor: number,
-  id:number
+  id: number
 };
 export interface PaginatedTransactions {
   pageCount: number;
@@ -15,10 +15,11 @@ export interface PaginatedTransactions {
 }
 
 export async function getTransactions(pageSize: number, page: number): Promise<PaginatedTransactions> {
-  // Fetch data from JSON
+ 
+  // Fetch data as JSON format
 
   const pageCount = Math.ceil(data.transactions.length / pageSize);
-  const transactions: Transaction[] = [];
+  let transactions: Transaction[] = [];
   const start = (page - 1) * pageSize;
   const end = Math.min(page * pageSize, data.transactions.length)
 

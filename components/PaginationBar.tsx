@@ -10,25 +10,25 @@ export interface PaginationBarProps {
 
 export default function PaginationBar({ href, page, pageCount }: PaginationBarProps) {
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex gap-[1rem] items-center">
       <PaginationLink href={`${href}?page=1}`} page={page}
         enabled={page > 1}>
-        <ChevronDoubleLeftIcon className="h-10 w-10" />
+        <ChevronDoubleLeftIcon className="w-[32px] h-[32px] border-none" />
       </PaginationLink>
       <PaginationLink href={`${href}?page=${page - 1}`} page={page}
         enabled={page > 1}>
-        <ChevronLeftIcon className="h-10 w-10" />
+        <ChevronLeftIcon className="w-[32px] h-[32px] border-none" />
       </PaginationLink>
 
       <InsidePagingationLink pageCount={pageCount} page={page} href={href} />
 
       <PaginationLink href={`${href}?page=${page + 1}`} page={page}
         enabled={page < pageCount}>
-        <ChevronRightIcon className="h-10 w-10" />
+        <ChevronRightIcon className="w-[32px] h-[32px] border-none" />
       </PaginationLink>
       <PaginationLink href={`${href}?page=${pageCount}`} page={page}
-        enabled={page < pageCount}>
-        <ChevronDoubleRightIcon className="h-10 w-10" />
+        enabled={page < pageCount} >
+        <ChevronDoubleRightIcon className="w-[32px] h-[32px] border-none" />
       </PaginationLink>
     </div>
   );
@@ -45,16 +45,16 @@ function PaginationLink({ children, enabled, href, page }: PaginationLinkProps) 
   if (!enabled) {
     return (
       <span
-        className="border cursor-not-allowed rounded text-slate-300 text-sm">
+        className="border cursor-not-allowed rounded-3xl text-slate-300 text-[14px] ">
         {children}
       </span>
     );
   }
   return (
     <Link href={href}
-      className={page !== children ? `border rounded text-slate-500 text-lg flex justify-center items-center
-                 hover:bg-orange-100 hover:text-slate-700 w-10 h-10 `: `border rounded text-red-500 text-lg flex justify-center items-center
-                bg-blue-500 hover:text-slate-700 w-10 h-10 `}>
+      className={page !== children ? `border rounded-3xl text-slate-500 text-[14px] flex justify-center items-center
+                 hover:bg-orange-100 hover:text-slate-700 w-[32px] h-[32px]`: `border rounded-3xl text-[14px] flex justify-center items-center
+                bg-#F4F5E2 hover:text-slate-700 w-[32px] h-[32px]`}>
       {children}
     </Link>
   );
@@ -75,19 +75,19 @@ function InsidePagingationLink({ pageCount, page, href }: { pageCount: number, p
   if (pageCount >= 5) {
     if (page === 1 || page === 2) {
       return (
-        <div className='flex gap-2 items-center'>
+        <div className='flex items-center gap-[1rem]'>
           <PaginationLink href={`${href}?page=1`} enabled page={page} >{1}</PaginationLink>
           <PaginationLink href={`${href}?page=2`} enabled page={page}>{2}</PaginationLink>
           <PaginationLink href={`${href}?page=3`} enabled page={page}>{3}</PaginationLink>
-          <button>...</button>
+          <button className="text-center text-[14px] w-[32px] h-[32px] border-gray-60 border-2 rounded-3xl">...</button>
           <PaginationLink href={`${href}?page=${pageCount}`} enabled page={page}>{pageCount}</PaginationLink>
         </div>
       )
     } else if (page === pageCount - 1 || page === pageCount) {
       return (
-        <div className='flex gap-2 items-center'>
+        <div className='flex gap-[1rem] items-center'>
           <PaginationLink href={`${href}?page=1`} enabled page={page} >{1}</PaginationLink>
-          <button>...</button>
+          <button className="text-center text-[14px] w-[32px] h-[32px] border-gray-60 border-2 rounded-3xl">...</button>
           <PaginationLink href={`${href}?page=${pageCount - 2}`} enabled page={page}>{pageCount - 2}</PaginationLink>
           <PaginationLink href={`${href}?page=${pageCount - 1}`} enabled page={page}>{pageCount - 1}</PaginationLink>
           <PaginationLink href={`${href}?page=${pageCount}`} enabled page={page}>{pageCount}</PaginationLink>
@@ -95,19 +95,19 @@ function InsidePagingationLink({ pageCount, page, href }: { pageCount: number, p
       )
     } else if (page === 3) {
       return (
-        <div className='flex gap-2 items-center'>
+        <div className='flex gap-[1rem] items-center'>
           <PaginationLink href={`${href}?page=2`} enabled page={page}>{2}</PaginationLink>
           <PaginationLink href={`${href}?page=3`} enabled page={page}>{3}</PaginationLink>
           <PaginationLink href={`${href}?page=4`} enabled page={page}>{4}</PaginationLink>
-          <button>...</button>
+          <button className="text-center text-[14px] w-[32px] h-[32px] border-gray-60 border-2 rounded-3xl">...</button>
           <PaginationLink href={`${href}?page=${pageCount}`} enabled page={page}>{pageCount}</PaginationLink>
         </div>
       )
     } else if (page === pageCount - 2) {
       return (
-        <div className='flex gap-2 items-center'>
+        <div className='flex gap-[1rem] items-center'>
           <PaginationLink href={`${href}?page=1`} enabled page={page} >{1}</PaginationLink>
-          <button>...</button>
+          <button className="text-center text-[14px] w-[32px] h-[32px] border-gray-60 border-2 rounded-3xl">...</button>
           <PaginationLink href={`${href}?page=${pageCount - 3}`} enabled page={page}>{pageCount - 3}</PaginationLink>
           <PaginationLink href={`${href}?page=${pageCount - 2}`} enabled page={page}>{pageCount - 2}</PaginationLink>
           <PaginationLink href={`${href}?page=${pageCount-1}`} enabled page={page}>{pageCount-1}</PaginationLink>
@@ -115,11 +115,11 @@ function InsidePagingationLink({ pageCount, page, href }: { pageCount: number, p
       )
     } else {
       return (
-        <div className='flex gap-2 items-center'>
+        <div className='flex gap-[1rem] items-center'>
           <PaginationLink href={`${href}?page=1`} enabled page={page} >{1}</PaginationLink>
-          <button>...</button>
+          <button className="text-center text-[14px] w-[32px] h-[32px] border-gray-60 border-2 rounded-3xl">...</button>
           <PaginationLink href={`${href}?page=${page}`} enabled page={page}>{page}</PaginationLink>
-          <button>...</button>
+          <button className="text-center text-[14px] w-[32px] h-[32px] border-gray-60 border-2 rounded-3xl">...</button>
           <PaginationLink href={`${href}?page=${pageCount}`} enabled page={page}>{pageCount}</PaginationLink>
         </div>
       )

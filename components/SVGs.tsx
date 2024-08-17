@@ -6,7 +6,7 @@ const SVGs = () => {
       <svg id="svg-logo" viewBox="0 0 40 40" fill="none">
         <path d="M20.3819 31.8949C20.1708 32.1059 19.8285 32.1052 19.6181 31.8949L8.10486 20.3816C8.00418 20.2802 7.94824 20.1452 7.94824 20.0005C7.94824 19.8558 8.00268 19.7216 8.10561 19.6186L19.6189 8.10536C19.8292 7.89429 20.1715 7.89503 20.3826 8.10536L22.3143 10.0378L27.937 4.41502L26.0046 2.48259C22.6939 -0.828115 17.3076 -0.826623 13.9976 2.48259L2.48285 13.9966C0.881563 15.5986 0 17.7302 0 20.0005C0 22.2708 0.881563 24.4031 2.48285 26.0044L13.9954 37.5176C15.5959 39.1189 17.7282 40.0012 19.9993 40.0012C22.2703 40.0012 24.4026 39.1189 26.0031 37.5176L32.0786 31.4429L26.4566 25.8209L20.3819 31.8956V31.8949Z" fill="#E1FC54" />
         <path d="M39.9997 20C39.9997 17.7305 39.1182 15.5982 37.5161 13.9962L30.7314 7.21216L25.1094 12.8342L31.8941 19.6189C31.9971 19.7219 32.0515 19.8539 32.0515 20.0008C32.0515 20.1477 31.9971 20.2782 31.8941 20.3819L29.2524 23.0236L34.8744 28.6456L37.5161 26.0039C39.1182 24.4019 39.9997 22.2696 39.999 20H39.9997Z" fill="white" />
-      </svg>
+      </svg>      
       <svg id="svg-servico" viewBox="0 0 24 24" fill="none">
         <path fillRule="evenodd" clipRule="evenodd" d="M17.002 21.0051H6.99788C4.78782 21.0051 2.99622 19.2135 2.99622 17.0034V9.0001C2.99622 7.89507 3.89202 6.99927 4.99705 6.99927H19.0029C20.1079 6.99927 21.0037 7.89507 21.0037 9.0001V17.0034C21.0037 19.2135 19.2121 21.0051 17.002 21.0051Z" stroke="#1D3962" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M7.99829 6.99923V4.99839C7.99829 3.89336 8.89409 2.99756 9.99912 2.99756H14.0008C15.1058 2.99756 16.0016 3.89336 16.0016 4.99839V6.99923" stroke="#1D3962" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -69,7 +69,7 @@ const SVGs = () => {
       </svg>
 
       // ! SVGs on Slide
-      <svg id="svg-transacoes" viewBox="0 0 40 40" fill="none" >
+      <svg id='svg-transacoes' viewBox="0 0 40 40" fill="none" >
         <rect width="40" height="40" rx="20" fill="#F0F3FD" />
         <path d="M23 20.9997V25.7501C23 26.9927 21.9927 28 20.7501 28H13.2499C12.6534 28.0002 12.0812 27.7633 11.6592 27.3416C11.2373 26.9199 11.0002 26.3479 11 25.7513V21.2499C10.9998 20.6534 11.2367 20.0812 11.6584 19.6592C12.0801 19.2373 12.6521 19.0002 13.2487 19H17" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M14 25H16" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -81,7 +81,14 @@ const SVGs = () => {
         <path d="M10 13L12 15L14 13" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
 
-      <svg id="svg-entradas" viewBox="0 0 41 40" fill="none">
+      <svg id="svg-saldo" viewBox="0 0 41 40" fill="none" >
+        <rect x="0.333313" width="40" height="40" rx="20" fill="#F0F3FD" />
+        <path d="M28.3333 19.5V17C28.3333 15.8954 27.4379 15 26.3333 15H12.8333C12.0049 15 11.3333 14.3284 11.3333 13.5V13.5C11.3333 12.6716 12.0049 12 12.8333 12H25.3333" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M26.8333 19.5H28.3333C28.8856 19.5 29.3333 19.9477 29.3333 20.5V23.5C29.3333 24.0523 28.8856 24.5 28.3333 24.5H26.8333C25.4526 24.5 24.3333 23.3807 24.3333 22V22C24.3333 20.6193 25.4526 19.5 26.8333 19.5V19.5Z" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M28.3333 24.5V27C28.3333 28.1046 27.4379 29 26.3333 29H13.8333C12.4526 29 11.3333 27.8807 11.3333 26.5V13.5" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+
+      <svg id="svg-entradas" viewBox="0 0 41 40" fill="none" >
         <rect x="0.666687" width="40" height="40" rx="20" fill="#F0F3FD" />
         <path d="M19.2519 24.416C18.6796 23.8438 18.5084 22.9832 18.8181 22.2355C19.1278 21.4879 19.8574 21.0004 20.6667 21.0004C21.4759 21.0004 22.2055 21.4879 22.5152 22.2355C22.8249 22.9832 22.6537 23.8438 22.0814 24.416C21.7062 24.7913 21.1973 25.0021 20.6667 25.0021C20.136 25.0021 19.6271 24.7913 19.2519 24.416" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M26.169 25.0021V21.0004" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -91,7 +98,17 @@ const SVGs = () => {
         <path d="M24.6683 16.9987H27.6696C28.2003 16.9986 28.7093 17.2093 29.0845 17.5846C29.4598 17.9598 29.6704 18.4689 29.6704 18.9996V27.0029C29.6704 27.5336 29.4598 28.0426 29.0845 28.4178C28.7093 28.7931 28.2003 29.0039 27.6696 29.0037H13.6637C13.133 29.0039 12.624 28.7931 12.2488 28.4178C11.8735 28.0426 11.6629 27.5336 11.6629 27.0029V18.9996C11.6629 18.4689 11.8735 17.9598 12.2488 17.5846C12.624 17.2093 13.133 16.9986 13.6637 16.9987H16.665" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
 
-      <svg id="svg-total" viewBox="0 0 41 40" fill="none">
+      <svg id="svg-saidas" viewBox="0 0 40 40" fill="none" >
+        <rect width="40" height="40" rx="20" fill="#F2F2FF" />
+        <path d="M18.5852 15.584C18.013 16.1562 17.8418 17.0168 18.1515 17.7645C18.4612 18.5121 19.1907 18.9996 20 18.9996C20.8093 18.9996 21.5389 18.5121 21.8485 17.7645C22.1582 17.0168 21.987 16.1562 21.4148 15.584C21.0396 15.2087 20.5307 14.9979 20 14.9979C19.4694 14.9979 18.9604 15.2087 18.5852 15.584" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M25.5023 14.998V18.9997" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M14.4977 14.998V18.9997" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M20 29.0038V24.0017" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M17.9992 26.0026L20 24.0018L22.0008 26.0026" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M24.0017 23.0012H27.0029C27.5336 23.0013 28.0426 22.7906 28.4179 22.4153C28.7931 22.04 29.0037 21.531 29.0037 21.0003V12.997C29.0037 12.4663 28.7931 11.9573 28.4179 11.582C28.0426 11.2068 27.5336 10.996 27.0029 10.9962H12.9971C12.4664 10.996 11.9574 11.2068 11.5821 11.582C11.2069 11.9573 10.9962 12.4663 10.9962 12.997V21.0003C10.9962 21.531 11.2069 22.04 11.5821 22.4153C11.9574 22.7906 12.4664 23.0013 12.9971 23.0012H15.9983" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+
+      <svg id="svg-total" viewBox="0 0 41 40" fill="none" >
         <rect x="0.333374" width="40" height="40" rx="20" fill="#F0F3FD" />
         <path d="M21.6012 16.8303C22.5775 17.8066 22.5775 19.3895 21.6012 20.3658C20.6249 21.3421 19.0419 21.3421 18.0656 20.3658C17.0893 19.3895 17.0893 17.8066 18.0656 16.8303C19.0419 15.8539 20.6249 15.8539 21.6012 16.8303" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M29.3334 21.982V14.098C29.3334 12.993 28.4384 12.098 27.3334 12.098H12.3334C11.2284 12.098 10.3334 12.993 10.3334 14.098V23.098C10.3334 24.203 11.2284 25.098 12.3334 25.098H20.5944" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -101,7 +118,7 @@ const SVGs = () => {
         <path d="M26.8544 27.902C24.9334 27.902 23.3754 26.344 23.3754 24.423C23.3754 22.502 24.9334 20.944 26.8544 20.944C28.7764 20.944 30.3334 22.502 30.3334 24.423C30.3334 26.344 28.7764 27.902 26.8544 27.902" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
 
-      <svg id="svg-saldo-final" viewBox="0 0 41 40" fill="none"  >
+      <svg id="svg-saldo-final" viewBox="0 0 41 40" fill="none" >
         <rect x="0.666626" width="40" height="40" rx="20" fill="#F0F3FD" />
         <ellipse cx="17.6654" cy="17.9991" rx="6.0025" ry="2.50104" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M23.6679 21.5006C23.6679 22.8819 20.9805 24.0017 17.6654 24.0017C14.3503 24.0017 11.6629 22.8819 11.6629 21.5006" stroke="#6086CA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

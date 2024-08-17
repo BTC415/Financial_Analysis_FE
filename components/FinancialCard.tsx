@@ -1,9 +1,9 @@
 const FinancialCard = ({ svg, text, value }: { svg: string, text: string, value: string }) => {
   return (
-    <div className="bg-white rounded-lg w-[200px] h-[134px] p-4">
+    <div className="bg-white rounded-[1rem] sm:w-[80rem] md:w-[40rem] w-[30rem] p-[1vw]">
       <svg width={40} height={40} className="mb-3"><use href={svg} /></svg>
-      <p className="text-sm">{text}</p>
-      <p className="font-bold text-2xl">{value}</p>
+      <p className="font-Inter text-[14px]">{text}</p>
+      <p className="font-bold text-[24px]">{value}</p>
     </div>
   )
 }
