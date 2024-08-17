@@ -27,8 +27,6 @@ interface PageProps {
 //Display items on each page
 const PAGE_SIZE = 10;
 
-const PAGE_SIZE = 10;
-
 export default function HomePage({ searchParams }: PageProps) {
   const [clicked, setClicked] = useState(false)
   const [transactions, setTransactions] = React.useState<Transaction[]>([]);
