@@ -18,6 +18,8 @@ import Calendar from "@/components/CalendarPopup";
 interface PageProps {
   searchParams: { page?: string };
 }
+
+//Display items on each page
 const PAGE_SIZE = 10;
 
 export default function HomePage({ searchParams }: PageProps) {
