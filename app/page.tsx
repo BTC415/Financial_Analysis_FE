@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, ChangeEvent } from 'react';
@@ -22,6 +23,9 @@ import MultiSelect from '@/components/multiselect';
 interface PageProps {
   searchParams: { page?: string };
 }
+
+//Display items on each page
+const PAGE_SIZE = 10;
 
 const PAGE_SIZE = 10;
 
@@ -54,15 +58,16 @@ export default function HomePage({ searchParams }: PageProps) {
 
   React.useEffect(() => {
     (async () => {
+
       const { transactions, pageCount } = await getTransactions(PAGE_SIZE, page);
       setTransactions(transactions);
       setPageCount(pageCount);
     })();
   }, [page]);
 
-  const items: MenuProps['items'] = [
+  const items: MenuProps["items"] = [
     {
-      key: '1',
+      key: "1",
       label: (
         <div className='flex  flex-row rounded-[10rem] bg-white items-center'>
           <svg width={24} height={24}><use href='#svg-left-arrow' /></svg>
@@ -70,7 +75,7 @@ export default function HomePage({ searchParams }: PageProps) {
           <svg width={24} height={24}><use href='#svg-right-arrow' /></svg>
         </div>
       ),
-    }
+    },
   ];
 
   return (
@@ -210,7 +215,11 @@ export default function HomePage({ searchParams }: PageProps) {
                 </div>
               </div>
               <div>
-                <Detail clicked={clicked} setClicked={setClicked} transaction={transaction} />
+                <Detail
+                  clicked={clicked}
+                  setClicked={setClicked}
+                  transaction={transaction}
+                />
               </div>
               {transactions.map((_transaction: Transaction, index) => (
                 <div id='card'>
@@ -271,10 +280,7 @@ export default function HomePage({ searchParams }: PageProps) {
             <PaginationBar href="/" page={page} pageCount={pageCount} />
           </div>
         </div>
-      </div >
+      </div>
     </>
   );
-};
-
-
-
+}
