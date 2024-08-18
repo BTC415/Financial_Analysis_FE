@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { Transaction } from '@/lib/transactions';
 import { Dispatch, SetStateAction } from 'react';
-import {DetailedDate} from '@/components/FormatDate';
+import { DetailedDate } from '@/components/FormatDate';
 
 interface DetailProps {
   transaction: Transaction | undefined;
@@ -13,8 +13,8 @@ interface DetailProps {
 const Detail: React.FC<DetailProps> = ({ transaction, clicked, setClicked }) => {
   return (
     clicked ? (
-      <>
-        <div className='w-full bg-gray-500 opacity-50 h-full fixed left-0 right-0 top-0 bottom-0 ' onClick={() => setClicked(false)}></div>
+      <div>
+        <div className='w-full bg-gray-500 opacity-50 h-full fixed left-0 right-0 top-0 bottom-0' onClick={() => setClicked(false)}></div>
         <div className='bg-white md:w-[30%] fixed right-0 md:top-0 mt-[72px] md:h-full shadow-md z-50 duration-300 ease-in-out bottom-0 min-h-fit w-full '>
           <div className='p-8 flex justify-between items-center border-b-2 border-gray-300'>
             <p className='font-bold text-[16px]'>Transação</p>
@@ -29,7 +29,7 @@ const Detail: React.FC<DetailProps> = ({ transaction, clicked, setClicked }) => 
             </div>
             <div className='p-3 flex justify-between items-center text-[12px]'>
               <p className='text-[14px]'>Data</p>
-              { transaction && <DetailedDate dateString={transaction.Data} time={transaction.time} /> }
+              {transaction && <DetailedDate dateString={transaction.Data} time={transaction.time} />}
             </div>
             <div className='p-3 flex justify-between items-center'>
               <p className='text-[14px]'>Prestador</p>
@@ -59,7 +59,7 @@ const Detail: React.FC<DetailProps> = ({ transaction, clicked, setClicked }) => 
             </div>
           </div>
         </div>
-      </>
+      </div>
     ) : null
   );
 };
