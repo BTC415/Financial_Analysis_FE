@@ -3,6 +3,7 @@ import { format, subMonths, addMonths } from 'date-fns'
 import { pt } from 'date-fns/locale'; // Import Brazilian locale
 
 const Mensal = () => {
+
   const [currentDate, setCurrentDate] = React.useState<Date>(new Date());
 
   const showPreviousMonth = () => {
@@ -12,6 +13,7 @@ const Mensal = () => {
   const showNextMonth = () => {
     setCurrentDate(addMonths(currentDate, 1));
   };
+
   return (
     <div className='flex flex-row bg-white p-2 rounded-md items-center'>
       <button onClick={showPreviousMonth}>
