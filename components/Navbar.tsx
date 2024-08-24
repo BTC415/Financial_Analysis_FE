@@ -11,7 +11,6 @@ const Navbar = () => {
             </svg>
           </div>
           <div className="flex flex-row gap-[1.5rem] justify-between items-center">
-
             <div className="bg-[#F3F3F5] flex justify-around flex-row items-center lg:w-[17vw] h-[63.89%] md:w-[25vw] sm:w-[30vw] rounded-[1rem]">
               <svg width={24} height={24}>
                 <use href="#svg-wallet" />
@@ -27,13 +26,11 @@ const Navbar = () => {
                 <p className="text-white text-[12px]">Depositar</p>
               </div>
             </div>
-
             <div>
               <svg width={24} height={40}>
                 <use href="#svg-vertical-bar" />
               </svg>
             </div>
-
             <div className="flex flex-row lg:w-[11.53vw] md:w-[17vw] sm:w-[23vw] items-center justify-around">
               <Image src="/avatar.png" alt="avatar" width={40}
                 height={40}
@@ -45,11 +42,9 @@ const Navbar = () => {
                 <use href="#svg-down-arrow" />
               </svg>
             </div>
-
           </div>
         </div>
       </div>
-
       <div className="sm:hidden sm:h-[5.74vh] bg-[#2E5E9E] flex flex-row justify-between items-center px-[3.33vw]">
         <div className="w-full flex items-center">
           <svg width={40} height={40}>
@@ -72,14 +67,12 @@ const Navbar = () => {
             </svg>
           </div>
           <div className="flex flex-row gap-[1.5rem] p-[1.5rem] items-center">
-
             <Image src="/avatar.png" alt="avatar" width={32}
               height={32} sizes="2.5rem"
               style={{
                 width: '100%',
                 height: 'auto',
               }} className="rounded-full" />
-
             <svg width={40} height={40}>
               <use href="#svg-three-bar-decreased" />
             </svg>
