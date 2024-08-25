@@ -15,12 +15,15 @@ const Sidebar = () => {
         <button className={`w-full h-[6.25vh] flex items-center justify-center ${clicked === "servico" ? 'border-lime-400 border-l-4' : ''}`} >
           <svg width={24} height={24} className="mx-auto items-center"><use href={`${clicked === "servico" ? '#svg-servico-yellow' : '#svg-servico'} `} /></svg>
         </button>
+
         <button className={`w-full h-[6.25vh] flex items-center justify-center ${clicked === "historico" ? 'border-lime-400 border-l-4' : ''}`}>
           <svg width={24} height={24} className="mx-auto "><use href={`${clicked === "historico" ? '#svg-historico-yellow' : '#svg-historico'} `} /></svg>
         </button>
+
         <button className={`w-full h-[6.25vh] flex items-center justify-center ${clicked === "wallet" ? 'border-lime-400 border-l-4' : ''}`} onClick={() => setClicked('wallet')}>
           <svg width={24} height={24} className="mx-auto"><use href={`${clicked === "wallet" ? '#svg-wallet-yellow' : '#svg-wallet'} `} /></svg>
         </button>
+        
       </div>
     </div >
   )
