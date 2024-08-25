@@ -30,6 +30,7 @@ const SVGs = () => {
         <path d="M7 12.0013H9" stroke="#1D3962" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M7 16.0013H8" stroke="#1D3962" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
+      
       <svg id="svg-historico-yellow" viewBox="0 0 24 24" fill="none" >
         <path d="M19 8.00134V5.00134C19 3.89677 18.1046 3.00134 17 3.00134H5C3.89543 3.00134 3 3.89677 3 5.00134V19.0013C3 20.1059 3.89543 21.0013 5 21.0013H9" stroke="#E1FC54" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M19.25 14.0013V12.0013C19.25 11.4491 18.8023 11.0013 18.25 11.0013H15.75C15.1977 11.0013 14.75 11.4491 14.75 12.0013V14.0013" stroke="#E1FC54" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
