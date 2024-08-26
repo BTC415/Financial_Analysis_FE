@@ -6,7 +6,7 @@
       "Descricao": "Recarga de Saldo em conta",
       "Prestador": "Diego Medeiros",
       "Tipo": "Deposito",
-      "Valor": 2000
+      "Valor": 200
     },
     {
       "Data": "2022-03-13",
@@ -14,7 +14,7 @@
       "Descricao": "Servico de Garcom",
       "Prestador": "Diego Medeiros",
       "Tipo": "Retirada",
-      "Valor": -150
+      "Valor": -1500
     },
     {
       "Data": "2022-03-10",
@@ -22,7 +22,7 @@
       "Descricao": "Recarga de Saldo em conta",
       "Prestador": "Diego Medeiros",
       "Tipo": "Deposito",
-      "Valor": 2000
+      "Valor": -2000
     },
     {
       "Data": "2022-03-15",
@@ -38,7 +38,7 @@
       "Descricao": "Recarga de Saldo em conta",
       "Prestador": "Diego Medeiros",
       "Tipo": "Deposito",
-      "Valor": 2000
+      "Valor": -200
     },
     {
       "Data": "2022-03-15",
