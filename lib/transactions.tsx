@@ -1,4 +1,5 @@
 import data from '@/data/transacstions.json'
+
 export interface Transaction {
   Data: string;
   time: string;
@@ -9,6 +10,7 @@ export interface Transaction {
   Valor: number,
   id: number
 };
+
 export interface PaginatedTransactions {
   pageCount: number;
   transactions: Transaction[];
@@ -17,7 +19,6 @@ export interface PaginatedTransactions {
 export async function getTransactions(pageSize: number, page: number): Promise<PaginatedTransactions> {
  
   // Fetch data as JSON format
-
   const pageCount = Math.ceil(data.transactions.length / pageSize);
   let transactions: Transaction[] = [];
   const start = (page - 1) * pageSize;
