@@ -46,13 +46,13 @@ export default function HomePage({ searchParams }: PageProps) {
     setClicked(true)
   }
 
-  const handlePeriodChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setPeriodOption(e.target.value);
-  }
+  // const handlePeriodChange = (e: ChangeEvent<HTMLSelectElement>) => {
+  //   setPeriodOption(e.target.value);
+  // }
 
-  const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedOptions(e.target.value);
-  };  
+  // const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+  //   setSelectedOptions(e.target.value);
+  // };  
 
   React.useEffect(() => {
     (async () => {
